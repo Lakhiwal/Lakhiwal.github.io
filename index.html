@@ -12,7 +12,7 @@
             padding: 0;
             background-color: #f4f4f4;
             color: #333;
-            transition: background-color 0.3 eases, color 0.3s ease;
+            transition: background-color 0.5 eases, color 0.5s ease;
         }
 
         .container {
@@ -27,14 +27,14 @@
         header {
             text-align: center;
             padding: 20px 0;
-            background-color: #333;
+            background-color: #212121;
             color: #fff;
             position: fixed;
             width: 100%;
             top: 0;
             left: 0;
             z-index: 1000;
-            transition: padding 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+            transition: padding 0.5s ease, background-color 0.5s ease, color 0.5s ease;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -82,7 +82,7 @@
             align-items: center;
             position: absolute;
             top: 30px;
-            right:25px;
+            right: 25px;
         }
 
         #dark-mode-toggle svg {
@@ -94,6 +94,33 @@
         }
 
         #dark-mode-toggle:hover {
+            text-decoration: underline;
+        }
+
+        #light-mode-toggle {
+            background-color: transparent;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            margin: 5px 0 0;
+            /* Adjusted margin */
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+            position: absolute;
+            top: 30px;
+            right: 25px;
+        }
+
+        #light-mode-toggle svg {
+            width: 24px;
+            /* Adjust icon size */
+            height: 24px;
+            margin-left: 5px;
+            /* Adjust spacing */
+        }
+
+        #light-mode-toggle:hover {
             text-decoration: underline;
         }
 
@@ -147,7 +174,7 @@
         footer {
             text-align: center;
             padding: 20px 0;
-            background-color: #333;
+            background-color: #212121;
             color: #fff;
             position: relative;
             clear: both;
@@ -155,7 +182,7 @@
 
         /* Dark Mode Styles */
         .dark-mode {
-            background-color: #333;
+            background-color: #212121;
             color: #fff;
             transition: background-color 0.5s ease, color 0.5s ease;
         }
@@ -179,7 +206,10 @@
         .dark-mode h1,
         .dark-mode h2,
         .dark-mode p,
-        .dark-mode .portfolio p,
+        .dark-mode .portfolio p {
+            color: #fff;
+        }
+
         .dark-mode footer p {
             color: #fff;
         }
@@ -212,6 +242,65 @@
 
         .dark-mode footer {
             background-color: #111;
+        }
+
+        .light-mode {
+            background-color: #fff;
+            color: #333;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        .light-mode header {
+            background-color: #333;
+            transition: background-color 0.5s ease;
+        }
+
+        .light-mode header img {
+            margin: 10px 0;
+            width: 150px;
+            height: 150px;
+            transition: width 0.5s ease, height 0.5s ease, margin 0.5s ease;
+        }
+
+        .light-mode a {
+            color: #333;
+        }
+
+        .light-mode h1,
+        .light-mode h2,
+        .light-mode p,
+        .light-mode .portfolio p {
+            color: #111;
+        }
+
+        .light-mode footer p {
+            fill: #fff;
+        }
+
+        .light-mode section {
+            color: #111;
+            /* Set text color for sections */
+        }
+
+        .light-mode h2 {
+            border-color: #111;
+            /* Set border color for h2 in dark mode */
+        }
+
+        .light-mode #linkedin,
+        .light-mode #github,
+        .light-mode #twitter,
+        .light-mode #instagram {
+            fill: #111;
+        }
+
+        .light-mode footer {
+            background-color: #333;
+            color: #fff;
+        }
+
+        .light-mode footer p {
+            color: #fff;
         }
 
         .project {
@@ -249,9 +338,10 @@
         .dark-mode .download-resume a {
             background-color: #111;
         }
+
         .icon {
-    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-}
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
 
         /* Light mode */
         .icon-container {
@@ -287,47 +377,72 @@
             fill: #fff;
             transition: fill 0.5s ease;
         }
+
+        .light-mode .profile-info h1,
+        .light-mode .profile-info p {
+            color: #fff;
+            transition: color 0.5s ease;
+        }
+
+        .light-mode #linkedin,
+        .light-mode #github,
+        .light-mode #twitter,
+        .light-mode #instagram {
+            fill: #111;
+            transition: fill 0.5s ease;
+        }
+
         .social-links a {
-    margin: 0 10px;
-    text-align: center;
-    display: inline-block;
-    position: relative; /* Ensure relative positioning for absolute children */
-    text-decoration: none; /* Remove default underline */
-}
-.dark-mode .icon#dark-icon {
-    opacity: 1;
-    transform: scale(1);
-}
-.dark-mode .icon#light-icon {
-    opacity: 0;
-    transform: scale(0);
-}
+            margin: 0 10px;
+            text-align: center;
+            display: inline-block;
+            position: relative;
+            /* Ensure relative positioning for absolute children */
+            text-decoration: none;
+            /* Remove default underline */
+        }
 
-.social-links svg {
-    width: 32px; /* Initial width */
-    height: 32px; /* Initial height */
-    vertical-align: middle;
-    margin-right: 5px;
-    transition: transform 0.3s ease;
-}
+        .dark-mode .icon#dark-icon {
+            opacity: 1;
+            transform: scale(1);
+        }
 
-.social-links a:hover svg {
-    transform: scale(1.5); /* Scale up to 1.5x on hover */
-}
+        .dark-mode .icon#light-icon {
+            opacity: 0;
+            transform: scale(0);
+        }
 
-.social-links a span {
-    display: block;
-    margin-top: 7px; /* Margin to adjust position below SVG */
-    transition: margin-top 0.3s ease; /* Smooth transition for margin change */
-    font-size: 0.8em; /* Adjust font size if necessary */
-}
+        .social-links svg {
+            width: 32px;
+            /* Initial width */
+            height: 32px;
+            /* Initial height */
+            vertical-align: middle;
+            margin-right: 5px;
+            transition: transform 0.5s ease;
+        }
 
-.social-links a:hover span {
-    margin-top: 10px; /* Move text down on hover */
-    font-size: 1em;
-    transition: 0,5s ease;
-}
+        .social-links a:hover svg {
+            transform: scale(1.5);
+            /* Scale up to 1.5x on hover */
+        }
 
+        .social-links a span {
+            display: block;
+            margin-top: 7px;
+            /* Margin to adjust position below SVG */
+            transition: margin-top 0.5s ease;
+            /* Smooth transition for margin change */
+            font-size: 0.8em;
+            /* Adjust font size if necessary */
+        }
+
+        .social-links a:hover span {
+            margin-top: 10px;
+            /* Move text down on hover */
+            font-size: 1em;
+            transition: 0, 5s ease;
+        }
     </style>
 </head>
 
@@ -346,18 +461,25 @@
                 <path d="M9.37 5.51a7.5 7.5 0 0 0 9.72 9.72 9 9 0 1 1-9.72-9.72z" />
             </svg>
             <!-- Light Mode Icon -->
-            <svg id="light-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="#333" style="display: none;">
+        </button>
+        <button id="light-mode-toggle" onclick="toggleLightMode()">
+            <svg id="light-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+                fill="#333" style="display: none;">
                 <circle cx="12" cy="12" r="5" fill="currentColor" />
                 <line stroke="currentColor" stroke-width="2" stroke-linecap="round" x1="12" y1="1" x2="12" y2="4" />
                 <line stroke="currentColor" stroke-width="2" stroke-linecap="round" x1="12" y1="20" x2="12" y2="23" />
                 <line stroke="currentColor" stroke-width="2" stroke-linecap="round" x1="4" y1="12" x2="1" y2="12" />
                 <line stroke="currentColor" stroke-width="2" stroke-linecap="round" x1="20" y1="12" x2="23" y2="12" />
-                <line stroke="currentColor" stroke-width="2" stroke-linecap="round" x1="5.5" y1="5.5" x2="3.5" y2="3.5" />
-                <line stroke="currentColor" stroke-width="2" stroke-linecap="round" x1="18.5" y1="18.5" x2="20.5" y2="20.5" />
-                <line stroke="currentColor" stroke-width="2" stroke-linecap="round" x1="5.5" y1="18.5" x2="3.5" y2="20.5" />
-                <line stroke="currentColor" stroke-width="2" stroke-linecap="round" x1="18.5" y1="5.5" x2="20.5" y2="3.5" />
+                <line stroke="currentColor" stroke-width="2" stroke-linecap="round" x1="5.5" y1="5.5" x2="3.5"
+                    y2="3.5" />
+                <line stroke="currentColor" stroke-width="2" stroke-linecap="round" x1="18.5" y1="18.5" x2="20.5"
+                    y2="20.5" />
+                <line stroke="currentColor" stroke-width="2" stroke-linecap="round" x1="5.5" y1="18.5" x2="3.5"
+                    y2="20.5" />
+                <line stroke="currentColor" stroke-width="2" stroke-linecap="round" x1="18.5" y1="5.5" x2="20.5"
+                    y2="3.5" />
             </svg>
-            
+
 
         </button>
     </header>
@@ -411,7 +533,8 @@
                     <br>• Designed the device to record abnormal data of vital signs, including heartbeat, SPO2, and
                     others.
                     <br>• Implemented a system to transmit the recorded data to the respective department in real
-                    time.</p>
+                    time.
+                </p>
                 <!-- <img src="images/project2.png" alt="Project 2 Image"> -->
                 <p><a href="https://github.com/LAKHIWAL/VITAL-MONITORING-SYSTEM" target="_blank">View Project</a></p>
             </div>
@@ -419,10 +542,11 @@
                 <h3>PRINTER APPLICATION</h3>
                 <p>• Developed a C# web application for print management, enabling users in any organization
                     to set and adhere to page limits.
-                   <br> • Implemented features to prevent users from exceeding their allocated print quota,
+                    <br> • Implemented features to prevent users from exceeding their allocated print quota,
                     ensuring fair distribution of printing resources.
-                   <br> • Successfully deployed and actively maintained the print management application in a
-                    college environment.</p>
+                    <br> • Successfully deployed and actively maintained the print management application in a
+                    college environment.
+                </p>
                 <!-- <img src="images/project2.png" alt="Project 2 Image"> -->
                 <p><a href="https://github.com/LAKHIWAL/PRINTER-APPLICATION" target="_blank">View Project</a></p>
             </div>
@@ -466,7 +590,11 @@
 
                 <div>
                     <a href="https://x.com/lakhiwal43" target="_blank">
-                        <svg id="twitter" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
+                        <svg id="twitter" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                            <path
+                                d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z" />
+                        </svg>
 
                         <br><span>X</span>
                     </a>
@@ -474,7 +602,7 @@
 
                 <div>
                     <a href="https://www.instagram.com/manishlakhiwal10/" target="_blank">
-                        <svg id="instagram" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="64" 
+                        <svg id="instagram" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="64"
                             height="64" fill="#333">
                             <path
                                 d="M17.77 0H6.23C2.793 0 0 2.793 0 6.23v11.54C0 21.207 2.793 24 6.23 24h11.54C21.207 24 24 21.207 24 17.77V6.23C24 2.793 21.207 0 17.77 0zm3.23 17.77c0 1.774-1.446 3.23-3.23 3.23H6.23c-1.785 0-3.23-1.456-3.23-3.23V6.23c0-1.785 1.456-3.23 3.23-3.23h11.54c1.785 0 3.23 1.456 3.23 3.23v11.54z" />
@@ -500,6 +628,7 @@
         const profileImage = document.querySelector('header img');
         const bioSection = document.getElementById('biography');
         const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const lightModeToggle = document.getElementById('light-mode-toggle');
         const darkIcon = document.getElementById('dark-icon');
         const lightIcon = document.getElementById('light-icon');
 
@@ -518,12 +647,19 @@
         });
 
         function toggleDarkMode() {
-            const body = document.body;
-            body.classList.toggle('dark-mode');
+            document.body.classList.toggle('dark-mode');
+            document.body.classList.remove('light-mode');
+            // Toggle visibility of dark mode toggle button
+            document.getElementById('dark-icon').style.display = 'none';
+            document.getElementById('light-icon').style.display = 'block';
+        }
 
-            // Toggle visibility of icons
-            darkIcon.style.display = body.classList.contains('dark-mode') ? 'none' : 'block';
-            lightIcon.style.display = body.classList.contains('dark-mode') ? 'block' : 'none';
+        function toggleLightMode() {
+            document.body.classList.toggle('light-mode');
+            document.body.classList.remove('dark-mode');
+            // Toggle visibility of light mode toggle button
+            document.getElementById('light-icon').style.display = 'none';
+            document.getElementById('dark-icon').style.display = 'block';
         }
 
     </script>
