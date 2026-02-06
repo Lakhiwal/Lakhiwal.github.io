@@ -41,8 +41,7 @@
             transition: background-color 0.5s ease, color 0.5s ease;
             overflow-x: hidden;
         }
-
-        /* Loading Screen */
+		
         .loading-screen {
             position: fixed;
             top: 0;
@@ -80,7 +79,7 @@
             letter-spacing: 2px;
         }
 
-        /* Loading Animations Container */
+        
         .loading-animations {
             display: flex;
             gap: 30px;
@@ -93,8 +92,6 @@
             width: 50px;
             height: 50px;
         }
-
-        /* Gaming Controller Animation */
         .gaming-icon {
             animation: gameBounce 1.5s ease-in-out infinite;
         }
@@ -106,7 +103,7 @@
             75% { transform: translateY(-8px) scale(1.05); }
         }
 
-        /* Code Animation */
+
         .code-icon {
             animation: codePulse 1.2s ease-in-out infinite;
         }
@@ -129,7 +126,7 @@
             100% { opacity: 1; }
         }
 
-        /* Football Animation */
+
         .football-icon {
             animation: footballSpin 2s linear infinite;
         }
@@ -154,7 +151,7 @@
             padding-top: 240px;
         }
 
-        /* Header Styles */
+       
         header {
             text-align: center;
             padding: 30px 0;
@@ -230,7 +227,7 @@
             margin: 5px 0;
         }
 
-        /* Theme Toggle */
+       
         #theme-toggle {
             background: rgba(255, 255, 255, 0.1);
             color: #fff;
@@ -261,18 +258,19 @@
             height: 24px;
         }
 
-        /* Section Styles */
+        
         section {
             margin: 120px 0;
             padding-top: 20px;
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+			transform: translateY(60px) scale(0.98);
+			transition: all 0.9s cubic-bezier(.17,.67,.3,1);
+            
         }
 
         section.visible {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
         }
 
         h2 {
@@ -310,7 +308,7 @@
             line-height: 1.8;
         }
 
-        /* Biography Section */
+        
         .bio-content {
             background: var(--card-bg);
             padding: 30px;
@@ -338,7 +336,7 @@
             color: var(--text-primary);
         }
 
-        /* Skills Section */
+       
         .skills-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -398,7 +396,7 @@
             box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
         }
 
-        /* Projects Section */
+        
         .project {
             background: var(--card-bg);
             padding: 30px;
@@ -448,7 +446,7 @@
             transform: translateX(4px);
         }
 
-        /* Contact Section */
+ 
         .contact-info {
             background: var(--card-bg);
             padding: 30px;
@@ -474,7 +472,7 @@
             text-decoration: underline;
         }
 
-        /* Social Links */
+       
         .social-links {
             display: flex;
             justify-content: center;
@@ -516,7 +514,7 @@
             color: var(--text-secondary);
         }
 
-        /* Download Resume */
+        
         .download-resume {
             text-align: center;
             margin: 40px 0;
@@ -542,7 +540,7 @@
             box-shadow: 0 12px 35px rgba(59, 130, 246, 0.4);
         }
 
-        /* Footer */
+        
         footer {
             text-align: center;
             padding: 30px 0;
@@ -556,7 +554,7 @@
             font-size: 0.95em;
         }
 
-        /* Dark Mode Styles */
+       
         .dark-mode {
             --text-primary: #e2e8f0;
             --text-secondary: #94a3b8;
@@ -581,7 +579,7 @@
             background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%);
         }
 
-        /* Mobile Responsiveness */
+
         @media (max-width: 1024px) {
             .container {
                 width: 85%;
@@ -709,7 +707,7 @@
             }
         }
 
-        /* Scroll Progress Bar */
+
         .scroll-progress {
             position: fixed;
             top: 0;
@@ -720,6 +718,118 @@
             z-index: 10001;
             transition: width 0.1s ease;
         }
+		.icon {
+    width: 18px;
+    height: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 6px;
+}
+
+.bio-highlight svg,
+.contact-info svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+
+.social-links a svg {
+    transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.social-links a {
+    position: relative;
+    overflow: hidden;
+	text-decoration: none;
+}
+
+.social-links a::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(59,130,246,0.25), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.social-links a:hover::before {
+    opacity: 1;
+}
+
+.social-links a:hover svg {
+    transform: scale(1.15) translateY(-1.67px);
+    filter: drop-shadow(0 0 8px rgba(59,130,246,0.6));
+}
+
+
+@keyframes iconBounce {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.25) translateY(-3px); }
+    100% { transform: scale(1.15) translateY(-2px); }
+}
+
+.social-links a:hover svg {
+    animation: iconBounce 0.35s ease forwards;
+}
+
+
+
+.social-links a:hover #linkedin { color: #0a66c2; }
+.social-links a:hover #github { color: #171515; }
+.social-links a:hover #twitter { color: #1da1f2; }
+.social-links a:hover #instagram { color: #e1306c; }
+
+
+
+.underline-reveal {
+    position: relative;
+    display: inline-block;
+}
+
+.underline-reveal::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    transition: width 0.4s ease;
+}
+
+.underline-reveal:hover::after,
+section.visible .underline-reveal::after {
+    width: 100%;
+}
+
+
+.social-links svg path {
+    stroke: currentColor;
+    stroke-width: 0.67;
+
+    fill: transparent;
+    stroke-dasharray: 350;
+    stroke-dashoffset: 350;
+
+    transition:
+        stroke-dashoffset 0.8s cubic-bezier(.65,.05,.36,1),
+        fill 0.25s ease 0.45s;
+}
+
+.social-links a:hover svg path {
+    stroke-dashoffset: 0;
+    fill: currentColor;
+}
+
+.social-links a:not(:hover) svg path {
+    fill: transparent;
+    transition:
+        stroke-dashoffset 0.7s cubic-bezier(.65,.05,.36,1),
+        fill 0.15s ease;
+}
+
     </style>
 <base target="_blank">
 </head>
@@ -809,22 +919,52 @@
     <div class="container">
         <!-- Biography Section -->
         <section id="biography">
-            <h2>About Me</h2>
+            <h2 class="underline-reveal">About Me</h2>
             <div class="bio-content">
                 <p>Full Stack Developer and Machine Learning Engineer with 1+ years of experience building production-grade applications and intelligent systems across fintech, education, and cybersecurity domains. I specialize in developing scalable REST APIs using Spring Boot and Django, implementing high-accuracy ML models (97%+) for threat detection and healthcare analytics, and architecting automated data pipelines that achieve 80% efficiency gains.</p>
                 <p style="margin-top: 15px;">Published researcher with a strong foundation in deep learning, statistical modeling, and computer vision. Currently working as a Full Stack Developer at Finworks360 while pursuing my passion for creating innovative technical solutions that deliver measurable business impact.</p>
                 <div class="bio-highlights">
-                    <span class="bio-highlight">🎓 M.Tech AI/ML</span>
-                    <span class="bio-highlight">💼 1+ Years Experience</span>
-                    <span class="bio-highlight">📚 Published Researcher</span>
-                    <span class="bio-highlight">🚀 97%+ ML Accuracy</span>
-                </div>
+
+    <span class="bio-highlight">
+        <!-- Graduation -->
+        <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
+        </svg>
+        M.Tech AI/ML
+    </span>
+
+    <span class="bio-highlight">
+        <!-- Briefcase -->
+        <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M10 4h4v2h5a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h5V4z"/>
+        </svg>
+        1+ Years Experience
+    </span>
+
+    <span class="bio-highlight">
+        <!-- Book -->
+        <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M4 5a2 2 0 0 1 2-2h12v18H6a2 2 0 0 0-2 2V5z"/>
+        </svg>
+        Published Researcher
+    </span>
+
+    <span class="bio-highlight">
+        <!-- Rocket -->
+        <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M14 3l7 7-4 4-7-7V3zM3 14l7 7v-4l-3-3H3z"/>
+        </svg>
+        97%+ ML Accuracy
+    </span>
+
+</div>
+
             </div>
         </section>
 
         <!-- Skills Section -->
         <section id="skills">
-            <h2>Skills & Technologies</h2>
+            <h2 class="underline-reveal">Skills & Technologies</h2>
             <div class="skills-container">
                 <div class="skill-category">
                     <h3>Programming Languages</h3>
@@ -885,7 +1025,7 @@
 
         <!-- Projects Section -->
         <section id="projects">
-            <h2>Featured Projects</h2>
+            <h2 class="underline-reveal">Featured Projects</h2>
             
             <div class="project">
                 <h3>DDoS Attack Detection in SDN using ML</h3>
@@ -918,7 +1058,7 @@
 
         <!-- Experience Section -->
         <section id="experience">
-            <h2>Professional Experience</h2>
+            <h2 class="underline-reveal">Professional Experience</h2>
             
             <div class="project">
                 <h3>Full Stack Developer — Finworks360, New Delhi</h3>
@@ -947,7 +1087,7 @@
 
         <!-- Publications Section -->
         <section id="publications">
-            <h2>Publications</h2>
+            <h2 class="underline-reveal">Publications</h2>
             <div class="bio-content">
                 <p>• <strong>Hybrid Machine Learning and Time Series Approaches for GHI Forecasting in Dehradun Using NSRDB Data</strong> — IEEE International Conference on Computing Sciences & Communications - 2026 (ICCSC-2026)</p>
                 <p style="margin-top: 10px;">• <strong>Comparative Analysis of Machine Learning Techniques for Network Traffic Classification</strong> — IEEE International Conference on Computing Sciences & Communications - 2026 (ICCSC-2026)</p>
@@ -958,45 +1098,72 @@
 
         <!-- Contact Section -->
         <section id="contact">
-            <h2>Get In Touch</h2>
+            <h2 class="underline-reveal">Get In Touch</h2>
             <div class="contact-info">
-                <p>📧 <a href="mailto:lakhiwal43@gmail.com">lakhiwal43@gmail.com</a></p>
-                <p>📱 <a href="tel:+918383954896">+91 83839 54896</a></p>
-                <p>📍 Faridabad, Haryana, India</p>
-            </div>
+
+    <p>
+        <!-- Email -->
+        <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M2 4h20v16H2V4zm10 9l8-5H4l8 5z"/>
+        </svg>
+        <a href="mailto:lakhiwal43@gmail.com">lakhiwal43@gmail.com</a>
+    </p>
+
+    <p>
+        <!-- Phone -->
+        <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.2 11.7 11.7 0 0 0 3.7.6 1 1 0 0 1 1 1v3.5a1 1 0 0 1-1 1A19 19 0 0 1 3 4a1 1 0 0 1 1-1H7.5a1 1 0 0 1 1 1 11.7 11.7 0 0 0 .6 3.7 1 1 0 0 1-.2 1l-2.3 2.1z"/>
+        </svg>
+        <a href="tel:+918383954896">+91 83839 54896</a>
+    </p>
+
+    <p>
+        <!-- Location -->
+        <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/>
+        </svg>
+        Faridabad, Haryana, India
+    </p>
+
+</div>
+
         </section>
 
         <!-- Social Media Section -->
         <section id="social-media">
-            <h2>Connect With Me</h2>
+            <h2 class="underline-reveal">Connect With Me</h2>
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/manish-lakhiwal/" target="_blank">
                     <svg id="linkedin" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
-                        <path d="M24,4H6C4.895,4,4,4.895,4,6v18c0,1.105,0.895,2,2,2h18c1.105,0,2-0.895,2-2V6C26,4.895,25.105,4,24,4z M10.954,22h-2.95 v-9.492h2.95V22z M9.449,11.151c-0.951,0-1.72-0.771-1.72-1.72c0-0.949,0.77-1.719,1.72-1.719c0.948,0,1.719,0.771,1.719,1.719 C11.168,10.38,10.397,11.151,9.449,11.151z M22.004,22h-2.948v-4.616c0-1.101-0.02-2.517-1.533-2.517 c-1.535,0-1.771,1.199-1.771,2.437V22h-2.948v-9.492h2.83v1.297h0.04c0.394-0.746,1.356-1.533,2.791-1.533 c2.987,0,3.539,1.966,3.539,4.522V22z"></path>
-                    </svg>
-                    <span>LinkedIn</span>
+<svg id="linkedin" viewBox="0 0 24 24" fill="currentColor">
+<path d="M4 3a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm0 6h4v12H4zM10 9h4v1.7c.6-1 2-2 4-2 3 0 5 2 5 6v6h-4v-5c0-2-1-3-2.5-3S14 14 14 16v5h-4z"/>
+</svg>
+
+                    <span class="underline-reveal">LinkedIn</span>
                 </a>
 
                 <a href="https://github.com/Lakhiwal" target="_blank">
-                    <svg id="github" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
-                        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.302 3.438 9.8 8.206 11.387.6.11.822-.262.822-.58 0-.288-.012-1.048-.015-2.052-3.338.724-4.042-1.61-4.042-1.61-.546-1.382-1.333-1.75-1.333-1.75-1.088-.743.084-.73.084-.73 1.203.086 1.837 1.236 1.837 1.236 1.07 1.834 2.806 1.305 3.49.998.108-.778.42-1.306.764-1.606-2.676-.306-5.48-1.338-5.48-5.946 0-1.314.465-2.384 1.236-3.226-.124-.307-.534-1.528.116-3.18 0 0 1.01-.324 3.3 1.23.958-.266 1.98-.398 3-.404 1.02.006 2.042.138 3 .404 2.29-1.554 3.298-1.23 3.298-1.23.652 1.652.242 2.873.118 3.18.774.842 1.234 1.912 1.234 3.226 0 4.62-2.808 5.636-5.488 5.936.43.373.818 1.106.818 2.226 0 1.608-.015 2.904-.015 3.3 0 .322.216.697.825.578C20.566 21.795 24 17.3 24 12c0-6.63-5.37-12-12-12z" />
-                    </svg>
-                    <span>GitHub</span>
+                    <svg id="github" viewBox="0 0 24 24" fill="currentColor">
+<path d="M12 .5A12 12 0 0 0 0 12.7c0 5.4 3.4 10 8.2 11.6.6.1.8-.2.8-.5v-2c-3.3.7-4-1.5-4-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1 2.7.8 3.3 1.3.1-.7.4-1.2.8-1.5-2.6-.3-5.3-1.4-5.3-6 0-1.3.4-2.3 1.1-3.1-.1-.3-.5-1.6.1-3.3 0 0 .9-.3 3 1.1a10 10 0 0 1 5.5 0c2.1-1.4 3-1.1 3-1.1.6 1.7.2 3 .1 3.3.7.8 1.1 1.8 1.1 3.1 0 4.6-2.8 5.7-5.4 6 .4.4.9 1.2.9 2.4v3.6c0 .3.2.6.8.5A12 12 0 0 0 24 12.7 12 12 0 0 0 12 .5z"/>
+</svg>
+
+                    <span class="underline-reveal">GitHub</span>
                 </a>
 
                 <a href="https://x.com/lakhiwal43" target="_blank">
-                    <svg id="twitter" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="28" height="28" fill="currentColor">
-                        <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z" />
-                    </svg>
-                    <span>X</span>
+                    <svg id="twitter" viewBox="0 0 24 24" fill="currentColor">
+<path d="M18 2h3l-7 8 8 12h-6l-5-7-6 7H2l7-8-8-12h6l5 7z"/>
+</svg>
+
+                    <span class="underline-reveal">X</span>
                 </a>
 
                 <a href="https://www.instagram.com/manishlakhiwal10/" target="_blank">
-                    <svg id="instagram" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
-                        <path d="M17.77 0H6.23C2.793 0 0 2.793 0 6.23v11.54C0 21.207 2.793 24 6.23 24h11.54C21.207 24 24 21.207 24 17.77V6.23C24 2.793 21.207 0 17.77 0zm3.23 17.77c0 1.774-1.446 3.23-3.23 3.23H6.23c-1.785 0-3.23-1.456-3.23-3.23V6.23c0-1.785 1.456-3.23 3.23-3.23h11.54c1.785 0 3.23 1.456 3.23 3.23v11.54z" />
-                        <path d="M12 5.54c-3.442 0-6.23 2.788-6.23 6.23 0 3.442 2.788 6.23 6.23 6.23 3.442 0 6.23-2.788 6.23-6.23 0-3.442-2.788-6.23-6.23-6.23zm0 10.423c-2.336 0-4.193-1.857-4.193-4.193S9.664 7.577 12 7.577c2.336 0 4.193 1.857 4.193 4.193 0 2.336-1.857 4.193-4.193 4.193zm6.065-11.874c-.336 0-.61.274-.61.61s.274.61.61.61.61-.274.61-.61-.274-.61-.61-.61z" />
-                    </svg>
-                    <span>Instagram</span>
+                    <svg id="instagram" viewBox="0 0 24 24" fill="currentColor">
+<path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm6-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+</svg>
+
+                    <span class="underline-reveal">Instagram</span>
                 </a>
             </div>
         </section>
@@ -1093,8 +1260,11 @@
             document.getElementById('dark-icon').style.display = 'none';
             document.getElementById('light-icon').style.display = 'block';
         }
+		document.querySelectorAll('section').forEach((section, i) => {
+    section.style.transitionDelay = `${i * 0.08}s`;
+});
+
     </script>
 </body>
 
 </html>
-
