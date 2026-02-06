@@ -4,15 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Manish Kumar Lakhiwal - M.Tech AI/ML Student Portfolio. Projects in Machine Learning, Deep Learning, and Software Development.">
     <title>Manish Kumar Lakhiwal - Personal Webpage</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
             color: #333;
-            transition: background-color 0.5 eases, color 0.5s ease;
+            transition: background-color 0.5s ease, color 0.5s ease;
         }
 
         .container {
@@ -20,14 +25,13 @@
             margin: 0 auto;
             padding: 20px;
             padding-top: 220px;
-            /* Adjust for fixed header */
             box-sizing: border-box;
         }
 
         header {
             text-align: center;
             padding: 20px 0;
-            background-color: #212121;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             color: #fff;
             position: fixed;
             width: 100%;
@@ -43,7 +47,7 @@
 
         header.small {
             padding: 10px 0;
-            background-color: #212121;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
         }
 
         header .profile-info {
@@ -66,68 +70,42 @@
             height: 150px;
             border-radius: 50%;
             margin: 10px 0;
-            /* Adjusted margin */
+            border: 4px solid rgba(255, 255, 255, 0.2);
             transition: width 0.5s ease, height 0.5s ease, margin 0.5s ease;
         }
 
-        #dark-mode-toggle {
-            background-color: transparent;
+        #theme-toggle {
+            background-color: rgba(255, 255, 255, 0.1);
             color: #fff;
             border: none;
             cursor: pointer;
-            margin: 5px 0 0;
-            /* Adjusted margin */
+            padding: 10px;
+            border-radius: 50%;
             font-size: 1.2em;
             display: flex;
             align-items: center;
+            justify-content: center;
             position: absolute;
-            top: 30px;
-            right: 25px;
+            top: 20px;
+            right: 20px;
+            width: 44px;
+            height: 44px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
-        #dark-mode-toggle svg {
+        #theme-toggle:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+
+        #theme-toggle svg {
             width: 24px;
-            /* Adjust icon size */
             height: 24px;
-            margin-left: 5px;
-            /* Adjust spacing */
-        }
-
-        #dark-mode-toggle:hover {
-            text-decoration: underline;
-        }
-
-        #light-mode-toggle {
-            background-color: transparent;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            margin: 5px 0 0;
-            /* Adjusted margin */
-            font-size: 1.2em;
-            display: flex;
-            align-items: center;
-            position: absolute;
-            top: 30px;
-            right: 25px;
-        }
-
-        #light-mode-toggle svg {
-            width: 24px;
-            /* Adjust icon size */
-            height: 24px;
-            margin-left: 5px;
-            /* Adjust spacing */
-        }
-
-        #light-mode-toggle:hover {
-            text-decoration: underline;
         }
 
         section {
             margin: 50px 0;
             padding-top: 20px;
-            /* Adjust for fixed header */
             box-sizing: border-box;
             color: inherit;
         }
@@ -136,6 +114,7 @@
             color: #333;
             border-bottom: 2px solid #333;
             padding-bottom: 10px;
+            margin-bottom: 25px;
         }
 
         .portfolio img {
@@ -153,28 +132,43 @@
             text-align: center;
             display: flex;
             justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
             margin-top: 20px;
-            /* Adjust spacing */
         }
 
         .social-links a {
-            margin: 0 50px;
             text-align: center;
             display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px);
         }
 
         .social-links svg {
             width: 32px;
             height: 32px;
             vertical-align: middle;
-            margin-right: 15px;
-            text-align: center;
+            transition: transform 0.5s ease;
+        }
+
+        .social-links a:hover svg {
+            transform: scale(1.2);
+        }
+
+        .social-links a span {
+            display: block;
+            margin-top: 8px;
+            font-size: 0.85em;
+            transition: margin-top 0.3s ease;
         }
 
         footer {
             text-align: center;
             padding: 20px 0;
-            background-color: #212121;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             color: #fff;
             position: relative;
             clear: both;
@@ -182,13 +176,13 @@
 
         /* Dark Mode Styles */
         .dark-mode {
-            background-color: #212121;
-            color: #fff;
+            background-color: #0f172a;
+            color: #e2e8f0;
             transition: background-color 0.5s ease, color 0.5s ease;
         }
 
         .dark-mode header {
-            background-color: #111;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             transition: background-color 0.5s ease;
         }
 
@@ -196,52 +190,35 @@
             margin: 10px 0;
             width: 150px;
             height: 150px;
+            border-color: rgba(255, 255, 255, 0.1);
             transition: width 0.5s ease, height 0.5s ease, margin 0.5s ease;
         }
 
         .dark-mode a {
-            color: #fff;
+            color: #e2e8f0;
         }
 
         .dark-mode h1,
         .dark-mode h2,
         .dark-mode p,
         .dark-mode .portfolio p {
-            color: #fff;
+            color: #e2e8f0;
         }
 
         .dark-mode footer p {
-            color: #fff;
+            color: #e2e8f0;
         }
 
         .dark-mode section {
-            color: #fff;
-            /* Set text color for sections */
+            color: #e2e8f0;
         }
 
         .dark-mode h2 {
-            border-color: #fff;
-            /* Set border color for h2 in dark mode */
-        }
-
-        .dark-mode #linkedin {
-            fill: #fff;
-        }
-
-        .dark-mode #github {
-            fill: #fff;
-        }
-
-        .dark-mode #twitter {
-            fill: #fff;
-        }
-
-        .dark-mode #instagram {
-            fill: #fff;
+            border-color: #e2e8f0;
         }
 
         .dark-mode footer {
-            background-color: #111;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
         }
 
         .light-mode {
@@ -251,7 +228,7 @@
         }
 
         .light-mode header {
-            background-color: #333;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             transition: background-color 0.5s ease;
         }
 
@@ -274,17 +251,15 @@
         }
 
         .light-mode footer p {
-            fill: #fff;
+            color: #fff;
         }
 
         .light-mode section {
             color: #111;
-            /* Set text color for sections */
         }
 
         .light-mode h2 {
             border-color: #111;
-            /* Set border color for h2 in dark mode */
         }
 
         .light-mode #linkedin,
@@ -292,10 +267,11 @@
         .light-mode #twitter,
         .light-mode #instagram {
             fill: #111;
+            transition: fill 0.5s ease;
         }
 
         .light-mode footer {
-            background-color: #333;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             color: #fff;
         }
 
@@ -305,63 +281,64 @@
 
         .project {
             margin-bottom: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #3b82f6;
         }
 
         .project h3 {
             margin-bottom: 10px;
+            color: #3b82f6;
         }
 
         .project p {
             line-height: 1.6;
         }
 
+        .project a {
+            color: #3b82f6;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .project a:hover {
+            color: #60a5fa;
+            text-decoration: underline;
+        }
+
         .download-resume {
             text-align: center;
             margin: 25px 0;
-            /* Adjust margin */
         }
 
         .download-resume a {
-            background-color: #333;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
             color: #fff;
-            padding: 10px 20px;
-            border-radius: 5px;
+            padding: 12px 28px;
+            border-radius: 8px;
             text-decoration: none;
-            font-size: 1.2em;
+            font-size: 1.1em;
+            font-weight: 500;
+            display: inline-block;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .download-resume a:hover {
-            background-color: #111;
-            transition: .5s;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
         }
 
         .dark-mode .download-resume a {
-            background-color: #111;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
         }
 
-        .icon {
-            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-        }
-
-        /* Light mode */
-        .icon-container {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
-
-        .icon-container svg {
-            width: 24px;
-            /* Adjust width as per your design */
-            height: 24px;
-            /* Adjust height as per your design */
-            vertical-align: middle;
-        }
-
-        .icon-container span {
-            font-size: 12px;
-            /* Adjust font size as per your design */
+        .social-links a {
+            margin: 0 10px;
+            text-align: center;
+            display: inline-block;
+            position: relative;
+            text-decoration: none;
         }
 
         .dark-mode .profile-info h1,
@@ -374,7 +351,7 @@
         .dark-mode #github,
         .dark-mode #twitter,
         .dark-mode #instagram {
-            fill: #fff;
+            fill: #e2e8f0;
             transition: fill 0.5s ease;
         }
 
@@ -392,97 +369,226 @@
             transition: fill 0.5s ease;
         }
 
-        .social-links a {
-            margin: 0 10px;
-            text-align: center;
-            display: inline-block;
-            position: relative;
-            /* Ensure relative positioning for absolute children */
-            text-decoration: none;
-            /* Remove default underline */
+        /* Skills Section Styles */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
         }
 
-        .dark-mode .icon#dark-icon {
-            opacity: 1;
-            transform: scale(1);
+        .skill-category {
+            background: rgba(59, 130, 246, 0.1);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
         }
 
-        .dark-mode .icon#light-icon {
-            opacity: 0;
-            transform: scale(0);
+        .skill-category h3 {
+            color: #3b82f6;
+            margin-bottom: 15px;
+            font-size: 1.1em;
         }
 
-        .social-links svg {
-            width: 32px;
-            /* Initial width */
-            height: 32px;
-            /* Initial height */
-            vertical-align: middle;
-            margin-right: 5px;
-            transition: transform 0.5s ease;
+        .dark-mode .skill-category {
+            background: rgba(59, 130, 246, 0.15);
+            border-color: rgba(59, 130, 246, 0.3);
         }
 
-        .social-links a:hover svg {
-            transform: scale(1.5);
-            /* Scale up to 1.5x on hover */
+        .dark-mode .skill-category h3 {
+            color: #60a5fa;
         }
 
-        .social-links a span {
-            display: block;
-            margin-top: 7px;
-            /* Margin to adjust position below SVG */
-            transition: margin-top 0.5s ease;
-            /* Smooth transition for margin change */
-            font-size: 0.8em;
-            /* Adjust font size if necessary */
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
         }
 
-        .social-links a:hover span {
-            margin-top: 10px;
-            /* Move text down on hover */
-            font-size: 1em;
-            transition: 0, 5s ease;
+        .skill-tag {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+        }
+
+        .dark-mode .skill-tag {
+            background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 1024px) {
+            .container {
+                width: 80%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+                padding-top: 180px;
+            }
+
+            header .profile-info h1 {
+                font-size: 1.8em;
+            }
+
+            header .profile-info p {
+                font-size: 0.9em;
+            }
+
+            header img {
+                width: 100px;
+                height: 100px;
+            }
+
+            header.small img {
+                width: 50px;
+                height: 50px;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+
+            .social-links {
+                gap: 20px;
+            }
+
+            .social-links a {
+                margin: 0 5px;
+            }
+
+            .project {
+                padding: 15px;
+            }
+
+            .project h3 {
+                font-size: 1.1em;
+            }
+
+            #theme-toggle {
+                top: 10px;
+                right: 10px;
+                width: 38px;
+                height: 38px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: 95%;
+                padding: 15px;
+                padding-top: 160px;
+            }
+
+            header .profile-info h1 {
+                font-size: 1.4em;
+            }
+
+            header .profile-info p {
+                font-size: 0.8em;
+            }
+
+            header img {
+                width: 80px;
+                height: 80px;
+            }
+
+            header.small img {
+                width: 40px;
+                height: 40px;
+            }
+
+            .social-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .social-links a {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .social-links a span {
+                margin-top: 0;
+            }
+
+            .skill-tag {
+                font-size: 0.8em;
+                padding: 5px 10px;
+            }
+
+            .download-resume a {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+        }
+
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Section fade-in animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        section {
+            animation: fadeInUp 0.6s ease-out;
         }
     </style>
+<base target="_blank">
 </head>
 
-<body oncontextmenu="return false">
+<body>
     <header>
         <div class="profile-info">
             <h1>Manish Kumar Lakhiwal</h1>
             <p>Masters of Technology in AI ML Student</p>
         </div>
-        <img src="images/profile.jpeg" alt="Manish Kumar Lakhiwal">
-        <button id="dark-mode-toggle" onclick="toggleDarkMode()">
-            <!-- Dark Mode Icon -->
-            <svg id="dark-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
-                fill="#fff">
-                <path fill="none" d="M0 0h24v24H0z" />
+        <img src="images/profile.jpeg" alt="Manish Kumar Lakhiwal Profile Picture">
+        <button id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light mode">
+            <!-- Dark Mode Icon (Moon) -->
+            <svg id="dark-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M9.37 5.51a7.5 7.5 0 0 0 9.72 9.72 9 9 0 1 1-9.72-9.72z" />
             </svg>
-            <!-- Light Mode Icon -->
-        </button>
-        <button id="light-mode-toggle" onclick="toggleLightMode()">
-            <svg id="light-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
-                fill="#333" style="display: none;">
-                <circle cx="12" cy="12" r="5" fill="currentColor" />
+            <!-- Light Mode Icon (Sun) -->
+            <svg id="light-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
+                <circle cx="12" cy="12" r="5" />
                 <line stroke="currentColor" stroke-width="2" stroke-linecap="round" x1="12" y1="1" x2="12" y2="4" />
                 <line stroke="currentColor" stroke-width="2" stroke-linecap="round" x1="12" y1="20" x2="12" y2="23" />
                 <line stroke="currentColor" stroke-width="2" stroke-linecap="round" x1="4" y1="12" x2="1" y2="12" />
                 <line stroke="currentColor" stroke-width="2" stroke-linecap="round" x1="20" y1="12" x2="23" y2="12" />
-                <line stroke="currentColor" stroke-width="2" stroke-linecap="round" x1="5.5" y1="5.5" x2="3.5"
-                    y2="3.5" />
-                <line stroke="currentColor" stroke-width="2" stroke-linecap="round" x1="18.5" y1="18.5" x2="20.5"
-                    y2="20.5" />
-                <line stroke="currentColor" stroke-width="2" stroke-linecap="round" x1="5.5" y1="18.5" x2="3.5"
-                    y2="20.5" />
-                <line stroke="currentColor" stroke-width="2" stroke-linecap="round" x1="18.5" y1="5.5" x2="20.5"
-                    y2="3.5" />
+                <line stroke="currentColor" stroke-width="2" stroke-linecap="round" x1="5.5" y1="5.5" x2="3.5" y2="3.5" />
+                <line stroke="currentColor" stroke-width="2" stroke-linecap="round" x1="18.5" y1="18.5" x2="20.5" y2="20.5" />
+                <line stroke="currentColor" stroke-width="2" stroke-linecap="round" x1="5.5" y1="18.5" x2="3.5" y2="20.5" />
+                <line stroke="currentColor" stroke-width="2" stroke-linecap="round" x1="18.5" y1="5.5" x2="20.5" y2="3.5" />
             </svg>
-
-
         </button>
     </header>
+
     <div class="container">
         <section id="biography">
             <h2>Biography</h2>
@@ -505,120 +611,164 @@
                 contribute articles to tech blogs and mentor aspiring students interested in AI and ML. I believe in the
                 importance of continuous learning and strive to inspire others to pursue their passions in technology.
             </p>
-
         </section>
+
+        <!-- NEW: Skills Section -->
+        <section id="skills">
+            <h2>Skills & Technologies</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">C#</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">JavaScript</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Machine Learning & AI</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">TensorFlow</span>
+                        <span class="skill-tag">Scikit-learn</span>
+                        <span class="skill-tag">Keras</span>
+                        <span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">NumPy</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Deep Learning</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Neural Networks</span>
+                        <span class="skill-tag">CNN</span>
+                        <span class="skill-tag">RNN</span>
+                        <span class="skill-tag">Computer Vision</span>
+                        <span class="skill-tag">NLP</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Web Development</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">HTML/CSS</span>
+                        <span class="skill-tag">ASP.NET</span>
+                        <span class="skill-tag">Flask</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools & Platforms</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">GitHub</span>
+                        <span class="skill-tag">Jupyter</span>
+                        <span class="skill-tag">VS Code</span>
+                        <span class="skill-tag">Arduino</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Soft Skills</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Problem Solving</span>
+                        <span class="skill-tag">Teamwork</span>
+                        <span class="skill-tag">Communication</span>
+                        <span class="skill-tag">Project Management</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="portfolio">
             <h2>Portfolio</h2>
             <div class="portfolio">
                 <p>Coming soon: My projects and contributions to the field of AI and ML.</p>
             </div>
         </section>
+
         <section id="projects">
             <h2>Projects</h2>
             <div class="project">
                 <h3>FETAL HEALTH CLASSIFICATION</h3>
-                <p>• Developed and implemented a user-friendly interface forfetal health classification using
+                <p>• Developed and implemented a user-friendly interface for fetal health classification using
                     advanced machine-learning algorithms.
                     <br>• Optimized machine learning models, achieving a classification accuracy of over 90% for
                     detecting fetal health.
                     <br>• Conducted extensive data cleaning and preprocessing to ensure high-quality input data,
                     resulting in improved model performance.
                 </p>
-                <!-- <img src="images/project1.png" alt="Project 1 Image"> -->
                 <p><a href="#">View Project</a></p>
             </div>
             <div class="project">
                 <h3>WEARABLE HEALTH MONITORING SYSTEM</h3>
-                <p>• Developed a device specifically designed forfrontline workers during the pandemic.
+                <p>• Developed a device specifically designed for frontline workers during the pandemic.
                     <br>• Designed the device to record abnormal data of vital signs, including heartbeat, SPO2, and
                     others.
                     <br>• Implemented a system to transmit the recorded data to the respective department in real
                     time.
                 </p>
-                <!-- <img src="images/project2.png" alt="Project 2 Image"> -->
                 <p><a href="https://github.com/LAKHIWAL/VITAL-MONITORING-SYSTEM" target="_blank">View Project</a></p>
             </div>
             <div class="project">
                 <h3>PRINTER APPLICATION</h3>
                 <p>• Developed a C# web application for print management, enabling users in any organization
                     to set and adhere to page limits.
-                    <br> • Implemented features to prevent users from exceeding their allocated print quota,
+                    <br>• Implemented features to prevent users from exceeding their allocated print quota,
                     ensuring fair distribution of printing resources.
-                    <br> • Successfully deployed and actively maintained the print management application in a
+                    <br>• Successfully deployed and actively maintained the print management application in a
                     college environment.
                 </p>
-                <!-- <img src="images/project2.png" alt="Project 2 Image"> -->
                 <p><a href="https://github.com/LAKHIWAL/PRINTER-APPLICATION" target="_blank">View Project</a></p>
             </div>
-            <!-- Add more projects as needed -->
         </section>
+
         <section id="contact">
             <h2>Contact Information</h2>
             <p>Email: <a href="mailto:lakhiwal43@gmail.com">lakhiwal43@gmail.com</a></p>
             <p>Phone: <a href="tel:+91 83839 54896">+91 83839 54896</a></p>
         </section>
+
         <section id="blog">
             <h2>Blog</h2>
             <p>Coming soon: Insights and articles about AI, ML, and technology trends.</p>
         </section>
+
         <section id="social-media">
             <h2>Social Media Links</h2>
             <div class="social-links">
-                <div>
-                    <a href="https://www.linkedin.com/in/manish-lakhiwal/" target="_blank">
-                        <svg id="linkedin" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="64" height="64"
-                            viewBox="0 0 24 24">
-                            <path
-                                d="M24,4H6C4.895,4,4,4.895,4,6v18c0,1.105,0.895,2,2,2h18c1.105,0,2-0.895,2-2V6C26,4.895,25.105,4,24,4z M10.954,22h-2.95 v-9.492h2.95V22z M9.449,11.151c-0.951,0-1.72-0.771-1.72-1.72c0-0.949,0.77-1.719,1.72-1.719c0.948,0,1.719,0.771,1.719,1.719 C11.168,10.38,10.397,11.151,9.449,11.151z M22.004,22h-2.948v-4.616c0-1.101-0.02-2.517-1.533-2.517 c-1.535,0-1.771,1.199-1.771,2.437V22h-2.948v-9.492h2.83v1.297h0.04c0.394-0.746,1.356-1.533,2.791-1.533 c2.987,0,3.539,1.966,3.539,4.522V22z">
-                            </path>
-                        </svg>
+                <a href="https://www.linkedin.com/in/manish-lakhiwal/" target="_blank">
+                    <svg id="linkedin" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
+                        <path d="M24,4H6C4.895,4,4,4.895,4,6v18c0,1.105,0.895,2,2,2h18c1.105,0,2-0.895,2-2V6C26,4.895,25.105,4,24,4z M10.954,22h-2.95 v-9.492h2.95V22z M9.449,11.151c-0.951,0-1.72-0.771-1.72-1.72c0-0.949,0.77-1.719,1.72-1.719c0.948,0,1.719,0.771,1.719,1.719 C11.168,10.38,10.397,11.151,9.449,11.151z M22.004,22h-2.948v-4.616c0-1.101-0.02-2.517-1.533-2.517 c-1.535,0-1.771,1.199-1.771,2.437V22h-2.948v-9.492h2.83v1.297h0.04c0.394-0.746,1.356-1.533,2.791-1.533 c2.987,0,3.539,1.966,3.539,4.522V22z"></path>
+                    </svg>
+                    <span>LinkedIn</span>
+                </a>
 
-                        <br><span>LinkedIn</span>
-                    </a>
-                </div>
+                <a href="https://github.com/Lakhiwal" target="_blank">
+                    <svg id="github" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
+                        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.302 3.438 9.8 8.206 11.387.6.11.822-.262.822-.58 0-.288-.012-1.048-.015-2.052-3.338.724-4.042-1.61-4.042-1.61-.546-1.382-1.333-1.75-1.333-1.75-1.088-.743.084-.73.084-.73 1.203.086 1.837 1.236 1.837 1.236 1.07 1.834 2.806 1.305 3.49.998.108-.778.42-1.306.764-1.606-2.676-.306-5.48-1.338-5.48-5.946 0-1.314.465-2.384 1.236-3.226-.124-.307-.534-1.528.116-3.18 0 0 1.01-.324 3.3 1.23.958-.266 1.98-.398 3-.404 1.02.006 2.042.138 3 .404 2.29-1.554 3.298-1.23 3.298-1.23.652 1.652.242 2.873.118 3.18.774.842 1.234 1.912 1.234 3.226 0 4.62-2.808 5.636-5.488 5.936.43.373.818 1.106.818 2.226 0 1.608-.015 2.904-.015 3.3 0 .322.216.697.825.578C20.566 21.795 24 17.3 24 12c0-6.63-5.37-12-12-12z" />
+                    </svg>
+                    <span>GitHub</span>
+                </a>
 
-                <div>
-                    <a href="https://github.com/Lakhiwal" target="_blank">
-                        <svg id="github" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="64" height="64"
-                            fill="#333">
-                            <path
-                                d="M12 0C5.37 0 0 5.37 0 12c0 5.302 3.438 9.8 8.206 11.387.6.11.822-.262.822-.58 0-.288-.012-1.048-.015-2.052-3.338.724-4.042-1.61-4.042-1.61-.546-1.382-1.333-1.75-1.333-1.75-1.088-.743.084-.73.084-.73 1.203.086 1.837 1.236 1.837 1.236 1.07 1.834 2.806 1.305 3.49.998.108-.778.42-1.306.764-1.606-2.676-.306-5.48-1.338-5.48-5.946 0-1.314.465-2.384 1.236-3.226-.124-.307-.534-1.528.116-3.18 0 0 1.01-.324 3.3 1.23.958-.266 1.98-.398 3-.404 1.02.006 2.042.138 3 .404 2.29-1.554 3.298-1.23 3.298-1.23.652 1.652.242 2.873.118 3.18.774.842 1.234 1.912 1.234 3.226 0 4.62-2.808 5.636-5.488 5.936.43.373.818 1.106.818 2.226 0 1.608-.015 2.904-.015 3.3 0 .322.216.697.825.578C20.566 21.795 24 17.3 24 12c0-6.63-5.37-12-12-12z" />
-                        </svg>
-                        <br><span>GitHub</span>
-                    </a>
-                </div>
+                <a href="https://x.com/lakhiwal43" target="_blank">
+                    <svg id="twitter" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="32" height="32" fill="currentColor">
+                        <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z" />
+                    </svg>
+                    <span>X</span>
+                </a>
 
-                <div>
-                    <a href="https://x.com/lakhiwal43" target="_blank">
-                        <svg id="twitter" xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                            <path
-                                d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z" />
-                        </svg>
-
-                        <br><span>X</span>
-                    </a>
-                </div>
-
-                <div>
-                    <a href="https://www.instagram.com/manishlakhiwal10/" target="_blank">
-                        <svg id="instagram" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="64"
-                            height="64" fill="#333">
-                            <path
-                                d="M17.77 0H6.23C2.793 0 0 2.793 0 6.23v11.54C0 21.207 2.793 24 6.23 24h11.54C21.207 24 24 21.207 24 17.77V6.23C24 2.793 21.207 0 17.77 0zm3.23 17.77c0 1.774-1.446 3.23-3.23 3.23H6.23c-1.785 0-3.23-1.456-3.23-3.23V6.23c0-1.785 1.456-3.23 3.23-3.23h11.54c1.785 0 3.23 1.456 3.23 3.23v11.54z" />
-                            <path
-                                d="M12 5.54c-3.442 0-6.23 2.788-6.23 6.23 0 3.442 2.788 6.23 6.23 6.23 3.442 0 6.23-2.788 6.23-6.23 0-3.442-2.788-6.23-6.23-6.23zm0 10.423c-2.336 0-4.193-1.857-4.193-4.193S9.664 7.577 12 7.577c2.336 0 4.193 1.857 4.193 4.193 0 2.336-1.857 4.193-4.193 4.193zm6.065-11.874c-.336 0-.61.274-.61.61s.274.61.61.61.61-.274.61-.61-.274-.61-.61-.61z" />
-                        </svg>
-                        <br><span>Instagram</span>
-                    </a>
-                </div>
-
+                <a href="https://www.instagram.com/manishlakhiwal10/" target="_blank">
+                    <svg id="instagram" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
+                        <path d="M17.77 0H6.23C2.793 0 0 2.793 0 6.23v11.54C0 21.207 2.793 24 6.23 24h11.54C21.207 24 24 21.207 24 17.77V6.23C24 2.793 21.207 0 17.77 0zm3.23 17.77c0 1.774-1.446 3.23-3.23 3.23H6.23c-1.785 0-3.23-1.456-3.23-3.23V6.23c0-1.785 1.456-3.23 3.23-3.23h11.54c1.785 0 3.23 1.456 3.23 3.23v11.54z" />
+                        <path d="M12 5.54c-3.442 0-6.23 2.788-6.23 6.23 0 3.442 2.788 6.23 6.23 6.23 3.442 0 6.23-2.788 6.23-6.23 0-3.442-2.788-6.23-6.23-6.23zm0 10.423c-2.336 0-4.193-1.857-4.193-4.193S9.664 7.577 12 7.577c2.336 0 4.193 1.857 4.193 4.193 0 2.336-1.857 4.193-4.193 4.193zm6.065-11.874c-.336 0-.61.274-.61.61s.274.61.61.61.61-.274.61-.61-.274-.61-.61-.61z" />
+                    </svg>
+                    <span>Instagram</span>
+                </a>
             </div>
         </section>
     </div>
+
     <div class="download-resume">
-        <a href="https://drive.google.com/file/d/1AF800ic_2XI7tL4_-fiR-v6oI3zbHhq-/view?usp=sharing" target="blank" download>Download Resume</a>
+        <a href="https://drive.google.com/file/d/1AF800ic_2XI7tL4_-fiR-v6oI3zbHhq-/view?usp=sharing" target="_blank" download>Download Resume</a>
     </div>
+
     <footer>
         <p>&copy; 2024 Manish Kumar Lakhiwal. All rights reserved.</p>
     </footer>
@@ -626,12 +776,8 @@
     <script>
         const header = document.querySelector('header');
         const profileImage = document.querySelector('header img');
-        const bioSection = document.getElementById('biography');
-        const darkModeToggle = document.getElementById('dark-mode-toggle');
-        const lightModeToggle = document.getElementById('light-mode-toggle');
-        const darkIcon = document.getElementById('dark-icon');
-        const lightIcon = document.getElementById('light-icon');
 
+        // Header shrink on scroll
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
                 header.classList.add('small');
@@ -646,22 +792,31 @@
             }
         });
 
-        function toggleDarkMode() {
-            document.body.classList.toggle('dark-mode');
-            document.body.classList.remove('light-mode');
-            // Toggle visibility of dark mode toggle button
+        // Single toggle function for theme
+        function toggleTheme() {
+            const isDark = document.body.classList.contains('dark-mode');
+            
+            if (isDark) {
+                // Switch to light mode
+                document.body.classList.remove('dark-mode');
+                document.body.classList.add('light-mode');
+                document.getElementById('dark-icon').style.display = 'block';
+                document.getElementById('light-icon').style.display = 'none';
+            } else {
+                // Switch to dark mode
+                document.body.classList.remove('light-mode');
+                document.body.classList.add('dark-mode');
+                document.getElementById('dark-icon').style.display = 'none';
+                document.getElementById('light-icon').style.display = 'block';
+            }
+        }
+
+        // Initialize - check system preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.body.classList.add('dark-mode');
             document.getElementById('dark-icon').style.display = 'none';
             document.getElementById('light-icon').style.display = 'block';
         }
-
-        function toggleLightMode() {
-            document.body.classList.toggle('light-mode');
-            document.body.classList.remove('dark-mode');
-            // Toggle visibility of light mode toggle button
-            document.getElementById('light-icon').style.display = 'none';
-            document.getElementById('dark-icon').style.display = 'block';
-        }
-
     </script>
 </body>
 
