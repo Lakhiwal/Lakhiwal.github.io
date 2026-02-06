@@ -4,50 +4,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Manish Kumar Lakhiwal - M.Tech AI/ML Student Portfolio. Projects in Machine Learning, Deep Learning, and Software Development.">
-    <title>Manish Kumar Lakhiwal - Personal Webpage</title>
+    <meta name="description" content="Manish Kumar Lakhiwal - Full Stack Developer & ML Engineer. Expertise in Spring Boot, Python, Machine Learning, and building production-grade applications.">
+    <title>Manish Kumar Lakhiwal | Full Stack Developer & ML Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --primary: #3b82f6;
+            --primary-dark: #2563eb;
+            --secondary: #8b5cf6;
+            --accent: #06b6d4;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --bg-light: #f8fafc;
+            --bg-dark: #0f172a;
+            --card-bg: #ffffff;
+            --gradient: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-primary);
+            line-height: 1.7;
             transition: background-color 0.5s ease, color 0.5s ease;
+            overflow-x: hidden;
+        }
+
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .loading-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        .loading-text {
+            color: #fff;
+            margin-top: 20px;
+            font-size: 1.1em;
+            font-weight: 500;
+            letter-spacing: 2px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
 
         .container {
-            width: 65%;
+            width: 70%;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-            padding-top: 220px;
-            box-sizing: border-box;
+            padding-top: 240px;
         }
 
+        /* Header Styles */
         header {
             text-align: center;
-            padding: 20px 0;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 30px 0;
+            background: var(--gradient);
             color: #fff;
             position: fixed;
             width: 100%;
             top: 0;
             left: 0;
             z-index: 1000;
-            transition: padding 0.5s ease, background-color 0.5s ease, color 0.5s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
         }
 
         header.small {
-            padding: 10px 0;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 12px 0;
+            background: rgba(26, 26, 46, 0.98);
+            backdrop-filter: blur(10px);
         }
 
         header .profile-info {
@@ -56,30 +123,58 @@
 
         header .profile-info h1 {
             margin: 0;
-            font-size: 2.5em;
-            transition: font-size 0.5s;
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.8em;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            transition: font-size 0.4s ease;
+            background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        header .profile-info p {
-            margin: 5px 0;
-            transition: font-size 0.5s;
+        header.small .profile-info h1 {
+            font-size: 1.6em;
+        }
+
+        header .profile-info .tagline {
+            margin: 8px 0 0;
+            font-size: 1.1em;
+            font-weight: 400;
+            color: #a5b4fc;
+            letter-spacing: 1px;
+            transition: font-size 0.4s ease;
+        }
+
+        header.small .profile-info .tagline {
+            font-size: 0.85em;
         }
 
         header img {
-            width: 150px;
-            height: 150px;
+            width: 160px;
+            height: 160px;
             border-radius: 50%;
-            margin: 10px 0;
+            margin: 15px 0;
             border: 4px solid rgba(255, 255, 255, 0.2);
-            transition: width 0.5s ease, height 0.5s ease, margin 0.5s ease;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            object-fit: cover;
         }
 
+        header.small img {
+            width: 50px;
+            height: 50px;
+            margin: 5px 0;
+        }
+
+        /* Theme Toggle */
         #theme-toggle {
-            background-color: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.1);
             color: #fff;
             border: none;
             cursor: pointer;
-            padding: 10px;
+            padding: 12px;
             border-radius: 50%;
             font-size: 1.2em;
             display: flex;
@@ -88,14 +183,15 @@
             position: absolute;
             top: 20px;
             right: 20px;
-            width: 44px;
-            height: 44px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            width: 48px;
+            height: 48px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
         }
 
         #theme-toggle:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1) rotate(15deg);
         }
 
         #theme-toggle svg {
@@ -103,360 +199,363 @@
             height: 24px;
         }
 
+        /* Section Styles */
         section {
-            margin: 50px 0;
+            margin: 60px 0;
             padding-top: 20px;
-            box-sizing: border-box;
-            color: inherit;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         h2 {
-            color: #333;
-            border-bottom: 2px solid #333;
-            padding-bottom: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 2em;
+            font-weight: 600;
+            color: var(--text-primary);
             margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 12px;
         }
 
-        .portfolio img {
-            width: 100%;
-            height: auto;
-            margin: 10px 0;
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 2px;
         }
 
-        a {
-            color: inherit;
-            text-decoration: none;
+        h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3em;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 10px;
         }
 
-        .social-links {
-            text-align: center;
+        p {
+            color: var(--text-secondary);
+            font-size: 1.05em;
+            line-height: 1.8;
+        }
+
+        /* Biography Section */
+        .bio-content {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .bio-highlights {
             display: flex;
-            justify-content: center;
             flex-wrap: wrap;
-            gap: 30px;
+            gap: 15px;
             margin-top: 20px;
         }
 
-        .social-links a {
-            text-align: center;
-            display: inline-block;
-            transition: transform 0.3s ease;
-        }
-
-        .social-links a:hover {
-            transform: translateY(-5px);
-        }
-
-        .social-links svg {
-            width: 32px;
-            height: 32px;
-            vertical-align: middle;
-            transition: transform 0.5s ease;
-        }
-
-        .social-links a:hover svg {
-            transform: scale(1.2);
-        }
-
-        .social-links a span {
-            display: block;
-            margin-top: 8px;
-            font-size: 0.85em;
-            transition: margin-top 0.3s ease;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px 0;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: #fff;
-            position: relative;
-            clear: both;
-        }
-
-        /* Dark Mode Styles */
-        .dark-mode {
-            background-color: #0f172a;
-            color: #e2e8f0;
-            transition: background-color 0.5s ease, color 0.5s ease;
-        }
-
-        .dark-mode header {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            transition: background-color 0.5s ease;
-        }
-
-        .dark-mode header img {
-            margin: 10px 0;
-            width: 150px;
-            height: 150px;
-            border-color: rgba(255, 255, 255, 0.1);
-            transition: width 0.5s ease, height 0.5s ease, margin 0.5s ease;
-        }
-
-        .dark-mode a {
-            color: #e2e8f0;
-        }
-
-        .dark-mode h1,
-        .dark-mode h2,
-        .dark-mode p,
-        .dark-mode .portfolio p {
-            color: #e2e8f0;
-        }
-
-        .dark-mode footer p {
-            color: #e2e8f0;
-        }
-
-        .dark-mode section {
-            color: #e2e8f0;
-        }
-
-        .dark-mode h2 {
-            border-color: #e2e8f0;
-        }
-
-        .dark-mode footer {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-        }
-
-        .light-mode {
-            background-color: #fff;
-            color: #333;
-            transition: background-color 0.5s ease, color 0.5s ease;
-        }
-
-        .light-mode header {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            transition: background-color 0.5s ease;
-        }
-
-        .light-mode header img {
-            margin: 10px 0;
-            width: 150px;
-            height: 150px;
-            transition: width 0.5s ease, height 0.5s ease, margin 0.5s ease;
-        }
-
-        .light-mode a {
-            color: #333;
-        }
-
-        .light-mode h1,
-        .light-mode h2,
-        .light-mode p,
-        .light-mode .portfolio p {
-            color: #111;
-        }
-
-        .light-mode footer p {
-            color: #fff;
-        }
-
-        .light-mode section {
-            color: #111;
-        }
-
-        .light-mode h2 {
-            border-color: #111;
-        }
-
-        .light-mode #linkedin,
-        .light-mode #github,
-        .light-mode #twitter,
-        .light-mode #instagram {
-            fill: #111;
-            transition: fill 0.5s ease;
-        }
-
-        .light-mode footer {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: #fff;
-        }
-
-        .light-mode footer p {
-            color: #fff;
-        }
-
-        .project {
-            margin-bottom: 30px;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 20px;
-            border-radius: 12px;
-            border-left: 4px solid #3b82f6;
-        }
-
-        .project h3 {
-            margin-bottom: 10px;
-            color: #3b82f6;
-        }
-
-        .project p {
-            line-height: 1.6;
-        }
-
-        .project a {
-            color: #3b82f6;
+        .bio-highlight {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+            padding: 10px 18px;
+            border-radius: 25px;
+            font-size: 0.95em;
             font-weight: 500;
-            transition: color 0.3s ease;
+            color: var(--text-primary);
         }
 
-        .project a:hover {
-            color: #60a5fa;
-            text-decoration: underline;
-        }
-
-        .download-resume {
-            text-align: center;
-            margin: 25px 0;
-        }
-
-        .download-resume a {
-            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-            color: #fff;
-            padding: 12px 28px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-size: 1.1em;
-            font-weight: 500;
-            display: inline-block;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .download-resume a:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
-        }
-
-        .dark-mode .download-resume a {
-            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-        }
-
-        .social-links a {
-            margin: 0 10px;
-            text-align: center;
-            display: inline-block;
-            position: relative;
-            text-decoration: none;
-        }
-
-        .dark-mode .profile-info h1,
-        .dark-mode .profile-info p {
-            color: #fff;
-            transition: color 0.5s ease;
-        }
-
-        .dark-mode #linkedin,
-        .dark-mode #github,
-        .dark-mode #twitter,
-        .dark-mode #instagram {
-            fill: #e2e8f0;
-            transition: fill 0.5s ease;
-        }
-
-        .light-mode .profile-info h1,
-        .light-mode .profile-info p {
-            color: #fff;
-            transition: color 0.5s ease;
-        }
-
-        .light-mode #linkedin,
-        .light-mode #github,
-        .light-mode #twitter,
-        .light-mode #instagram {
-            fill: #111;
-            transition: fill 0.5s ease;
-        }
-
-        /* Skills Section Styles */
+        /* Skills Section */
         .skills-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
             margin-top: 20px;
         }
 
         .skill-category {
-            background: rgba(59, 130, 246, 0.1);
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid rgba(59, 130, 246, 0.2);
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
         }
 
         .skill-category h3 {
-            color: #3b82f6;
-            margin-bottom: 15px;
-            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 18px;
+            font-size: 1.15em;
         }
 
-        .dark-mode .skill-category {
-            background: rgba(59, 130, 246, 0.15);
-            border-color: rgba(59, 130, 246, 0.3);
-        }
-
-        .dark-mode .skill-category h3 {
-            color: #60a5fa;
+        .skill-category h3::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
         }
 
         .skill-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 10px;
         }
 
         .skill-tag {
-            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             color: #fff;
-            padding: 6px 14px;
+            padding: 8px 16px;
             border-radius: 20px;
-            font-size: 0.85em;
+            font-size: 0.9em;
             font-weight: 500;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.3s ease;
+            cursor: default;
         }
 
         .skill-tag:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
         }
 
-        .dark-mode .skill-tag {
-            background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+        /* Projects Section */
+        .project {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 16px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--primary);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project:hover {
+            transform: translateX(5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .project h3 {
+            color: var(--primary);
+            margin-bottom: 12px;
+            font-size: 1.25em;
+        }
+
+        .project p {
+            line-height: 1.9;
+            margin-bottom: 15px;
+        }
+
+        .project a {
+            color: var(--primary);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .project a:hover {
+            color: var(--primary-dark);
+            gap: 12px;
+        }
+
+        .project a::after {
+            content: '→';
+            transition: transform 0.3s ease;
+        }
+
+        .project a:hover::after {
+            transform: translateX(4px);
+        }
+
+        /* Contact Section */
+        .contact-info {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-info p {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .contact-info a {
+            color: var(--primary);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            padding: 15px 25px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-links svg {
+            width: 28px;
+            height: 28px;
+            transition: transform 0.3s ease;
+        }
+
+        .social-links a:hover svg {
+            transform: scale(1.15);
+        }
+
+        .social-links a span {
+            font-size: 0.9em;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        /* Download Resume */
+        .download-resume {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .download-resume a {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: #fff;
+            padding: 14px 32px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+        }
+
+        .download-resume a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(59, 130, 246, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            background: var(--gradient);
+            color: #fff;
+            margin-top: 60px;
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95em;
+        }
+
+        /* Dark Mode Styles */
+        .dark-mode {
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --bg-light: #0f172a;
+            --card-bg: #1e293b;
+        }
+
+        .dark-mode header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+
+        .dark-mode .skill-category,
+        .dark-mode .project,
+        .dark-mode .bio-content,
+        .dark-mode .contact-info,
+        .dark-mode .social-links a {
+            background: #1e293b;
+            border-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .dark-mode .bio-highlight {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%);
         }
 
         /* Mobile Responsiveness */
         @media (max-width: 1024px) {
             .container {
-                width: 80%;
+                width: 85%;
+            }
+
+            header .profile-info h1 {
+                font-size: 2.2em;
             }
         }
 
         @media (max-width: 768px) {
             .container {
-                width: 90%;
-                padding-top: 180px;
+                width: 92%;
+                padding-top: 200px;
             }
 
             header .profile-info h1 {
                 font-size: 1.8em;
             }
 
-            header .profile-info p {
-                font-size: 0.9em;
+            header .profile-info .tagline {
+                font-size: 0.95em;
             }
 
             header img {
-                width: 100px;
-                height: 100px;
+                width: 120px;
+                height: 120px;
             }
 
             header.small img {
-                width: 50px;
-                height: 50px;
+                width: 45px;
+                height: 45px;
             }
 
             h2 {
-                font-size: 1.5em;
+                font-size: 1.6em;
             }
 
             .skills-container {
@@ -464,26 +563,22 @@
             }
 
             .social-links {
-                gap: 20px;
+                gap: 15px;
             }
 
             .social-links a {
-                margin: 0 5px;
+                padding: 12px 20px;
             }
 
-            .project {
-                padding: 15px;
-            }
-
-            .project h3 {
-                font-size: 1.1em;
+            .bio-highlights {
+                justify-content: center;
             }
 
             #theme-toggle {
                 top: 10px;
                 right: 10px;
-                width: 38px;
-                height: 38px;
+                width: 42px;
+                height: 42px;
             }
         }
 
@@ -491,90 +586,102 @@
             .container {
                 width: 95%;
                 padding: 15px;
-                padding-top: 160px;
+                padding-top: 170px;
+            }
+
+            header {
+                padding: 20px 0;
             }
 
             header .profile-info h1 {
-                font-size: 1.4em;
+                font-size: 1.5em;
             }
 
-            header .profile-info p {
+            header .profile-info .tagline {
                 font-size: 0.8em;
             }
 
             header img {
-                width: 80px;
-                height: 80px;
+                width: 90px;
+                height: 90px;
             }
 
             header.small img {
-                width: 40px;
-                height: 40px;
+                width: 38px;
+                height: 38px;
+            }
+
+            h2 {
+                font-size: 1.4em;
             }
 
             .social-links {
-                flex-direction: column;
-                gap: 15px;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
             }
 
             .social-links a {
-                display: flex;
-                align-items: center;
-                gap: 10px;
+                flex-direction: row;
+                padding: 10px 15px;
+                gap: 8px;
             }
 
-            .social-links a span {
-                margin-top: 0;
+            .bio-highlight {
+                font-size: 0.85em;
+                padding: 8px 14px;
             }
 
             .skill-tag {
-                font-size: 0.8em;
-                padding: 5px 10px;
+                font-size: 0.85em;
+                padding: 6px 12px;
             }
 
             .download-resume a {
-                padding: 10px 20px;
+                padding: 12px 24px;
                 font-size: 1em;
             }
-        }
 
-        /* Smooth scroll behavior */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Section fade-in animation */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            .project {
+                padding: 20px;
             }
         }
 
-        section {
-            animation: fadeInUp 0.6s ease-out;
+        /* Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            z-index: 10001;
+            transition: width 0.1s ease;
         }
     </style>
 <base target="_blank">
 </head>
 
 <body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loading-screen">
+        <div class="loader"></div>
+        <div class="loading-text">LOADING PORTFOLIO</div>
+    </div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scroll-progress"></div>
+
     <header>
         <div class="profile-info">
             <h1>Manish Kumar Lakhiwal</h1>
-            <p>Masters of Technology in AI ML Student</p>
+            <p class="tagline">Full Stack Developer & ML Engineer</p>
         </div>
         <img src="images/profile.jpeg" alt="Manish Kumar Lakhiwal Profile Picture">
         <button id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light mode">
-            <!-- Dark Mode Icon (Moon) -->
             <svg id="dark-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M9.37 5.51a7.5 7.5 0 0 0 9.72 9.72 9 9 0 1 1-9.72-9.72z" />
             </svg>
-            <!-- Light Mode Icon (Sun) -->
             <svg id="light-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
                 <circle cx="12" cy="12" r="5" />
                 <line stroke="currentColor" stroke-width="2" stroke-linecap="round" x1="12" y1="1" x2="12" y2="4" />
@@ -590,38 +697,30 @@
     </header>
 
     <div class="container">
+        <!-- Biography Section -->
         <section id="biography">
-            <h2>Biography</h2>
-            <p>Hello! I am Manish Kumar Lakhiwal, a passionate student currently pursuing my Masters of Technology in
-                Artificial Intelligence and Machine Learning. My journey into the world of technology started at a young
-                age, and I've been captivated by the potential of AI and ML to transform industries and solve complex
-                problems. I am constantly seeking to expand my knowledge and skills in this dynamic field.</p>
-
-            <p>During my academic career, I have focused on developing practical skills in data analysis, machine
-                learning algorithms, and deep learning models. I have hands-on experience in applying these techniques
-                to real-world problems, such as image recognition, natural language processing, and predictive
-                analytics.</p>
-
-            <p>Aside from technical skills, I am also enthusiastic about collaborative projects and team-based learning.
-                I believe in the power of teamwork to innovate and create impactful solutions. I actively participate in
-                hackathons, coding competitions, and research seminars to stay updated with the latest advancements in
-                AI and ML.</p>
-
-            <p>Outside of academics, I enjoy sharing my knowledge and experiences through writing and mentoring. I
-                contribute articles to tech blogs and mentor aspiring students interested in AI and ML. I believe in the
-                importance of continuous learning and strive to inspire others to pursue their passions in technology.
-            </p>
+            <h2>About Me</h2>
+            <div class="bio-content">
+                <p>Full Stack Developer and Machine Learning Engineer with 1+ years of experience building production-grade applications and intelligent systems across fintech, education, and cybersecurity domains. I specialize in developing scalable REST APIs using Spring Boot and Django, implementing high-accuracy ML models (97%+) for threat detection and healthcare analytics, and architecting automated data pipelines that achieve 80% efficiency gains.</p>
+                <p style="margin-top: 15px;">Published researcher with a strong foundation in deep learning, statistical modeling, and computer vision. Currently working as a Full Stack Developer at Finworks360 while pursuing my passion for creating innovative technical solutions that deliver measurable business impact.</p>
+                <div class="bio-highlights">
+                    <span class="bio-highlight">🎓 M.Tech AI/ML</span>
+                    <span class="bio-highlight">💼 1+ Years Experience</span>
+                    <span class="bio-highlight">📚 Published Researcher</span>
+                    <span class="bio-highlight">🚀 97%+ ML Accuracy</span>
+                </div>
+            </div>
         </section>
 
-        <!-- NEW: Skills Section -->
+        <!-- Skills Section -->
         <section id="skills">
             <h2>Skills & Technologies</h2>
             <div class="skills-container">
                 <div class="skill-category">
                     <h3>Programming Languages</h3>
                     <div class="skill-tags">
+                        <span class="skill-tag">Java</span>
                         <span class="skill-tag">Python</span>
-                        <span class="skill-tag">C#</span>
                         <span class="skill-tag">SQL</span>
                         <span class="skill-tag">JavaScript</span>
                     </div>
@@ -630,132 +729,160 @@
                     <h3>Machine Learning & AI</h3>
                     <div class="skill-tags">
                         <span class="skill-tag">TensorFlow</span>
+                        <span class="skill-tag">PyTorch</span>
                         <span class="skill-tag">Scikit-learn</span>
                         <span class="skill-tag">Keras</span>
-                        <span class="skill-tag">Pandas</span>
-                        <span class="skill-tag">NumPy</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Deep Learning</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Neural Networks</span>
-                        <span class="skill-tag">CNN</span>
-                        <span class="skill-tag">RNN</span>
-                        <span class="skill-tag">Computer Vision</span>
-                        <span class="skill-tag">NLP</span>
+                        <span class="skill-tag">XGBoost</span>
                     </div>
                 </div>
                 <div class="skill-category">
                     <h3>Web Development</h3>
                     <div class="skill-tags">
-                        <span class="skill-tag">HTML/CSS</span>
-                        <span class="skill-tag">ASP.NET</span>
+                        <span class="skill-tag">Spring Boot</span>
                         <span class="skill-tag">Flask</span>
+                        <span class="skill-tag">Django</span>
+                        <span class="skill-tag">REST APIs</span>
+                        <span class="skill-tag">Angular JS</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Databases</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">MongoDB</span>
+                        <span class="skill-tag">MySQL</span>
                     </div>
                 </div>
                 <div class="skill-category">
                     <h3>Tools & Platforms</h3>
                     <div class="skill-tags">
                         <span class="skill-tag">Git</span>
-                        <span class="skill-tag">GitHub</span>
-                        <span class="skill-tag">Jupyter</span>
-                        <span class="skill-tag">VS Code</span>
-                        <span class="skill-tag">Arduino</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Tableau</span>
+                        <span class="skill-tag">Power BI</span>
+                        <span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">NumPy</span>
                     </div>
                 </div>
                 <div class="skill-category">
-                    <h3>Soft Skills</h3>
+                    <h3>Cloud</h3>
                     <div class="skill-tags">
-                        <span class="skill-tag">Problem Solving</span>
-                        <span class="skill-tag">Teamwork</span>
-                        <span class="skill-tag">Communication</span>
-                        <span class="skill-tag">Project Management</span>
+                        <span class="skill-tag">AWS</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="portfolio">
-            <h2>Portfolio</h2>
-            <div class="portfolio">
-                <p>Coming soon: My projects and contributions to the field of AI and ML.</p>
-            </div>
-        </section>
-
+        <!-- Projects Section -->
         <section id="projects">
-            <h2>Projects</h2>
+            <h2>Featured Projects</h2>
+            
             <div class="project">
-                <h3>FETAL HEALTH CLASSIFICATION</h3>
-                <p>• Developed and implemented a user-friendly interface for fetal health classification using
-                    advanced machine-learning algorithms.
-                    <br>• Optimized machine learning models, achieving a classification accuracy of over 90% for
-                    detecting fetal health.
-                    <br>• Conducted extensive data cleaning and preprocessing to ensure high-quality input data,
-                    resulting in improved model performance.
-                </p>
+                <h3>DDoS Attack Detection in SDN using ML</h3>
+                <p><strong>M.Tech Thesis Project</strong> — Python, TensorFlow, Scikit-learn, Pandas</p>
+                <p>Trained and optimized ensemble ML models (Random Forest, XGBoost, Deep Neural Networks) on 2.67 million network traffic records, achieving 97.2% accuracy, 96.8% precision, and 95.4% recall in detecting DDoS attacks in Software-Defined Networks. Reduced false positive rate by 35% through advanced feature engineering. Deployed real-time threat detection on Ryu SDN controller processing 5000+ packets/second with sub-100ms latency. <strong>Published in IEEE international conference proceedings.</strong></p>
+                <p><a href="#">View Publication</a></p>
+            </div>
+
+            <div class="project">
+                <h3>Fetal Health Classification System</h3>
+                <p><strong>Healthcare AI Application</strong> — Flask, Scikit-learn, HTML/CSS/JavaScript</p>
+                <p>Developed a full-stack web application for real-time fetal health risk classification (Normal, Suspect, Pathological) with 95.3% accuracy using cardiotocogram (CTG) data. Implemented and compared multiple supervised learning algorithms including SVM, Decision Trees, Random Forest, and Gradient Boosting with hyperparameter tuning using GridSearchCV. Built a responsive frontend allowing healthcare professionals to input patient data and receive instant risk assessments with confidence scores.</p>
                 <p><a href="#">View Project</a></p>
             </div>
+
             <div class="project">
-                <h3>WEARABLE HEALTH MONITORING SYSTEM</h3>
-                <p>• Developed a device specifically designed for frontline workers during the pandemic.
-                    <br>• Designed the device to record abnormal data of vital signs, including heartbeat, SPO2, and
-                    others.
-                    <br>• Implemented a system to transmit the recorded data to the respective department in real
-                    time.
-                </p>
-                <p><a href="https://github.com/LAKHIWAL/VITAL-MONITORING-SYSTEM" target="_blank">View Project</a></p>
+                <h3>IoT-Based Wearable Health Monitoring System</h3>
+                <p><strong>IoT Healthcare Solution</strong> — Python, Raspberry Pi, MQTT, MongoDB, Flask</p>
+                <p>Designed and implemented an end-to-end real-time health monitoring system using Raspberry Pi 4 integrated with MAX30100 pulse oximeter, DS18B20 temperature sensor, and AD8232 heart rate sensors. Developed an efficient data collection pipeline streaming sensor data via MQTT to MongoDB. Created a Flask-based real-time dashboard with Chart.js visualizations and threshold-based alerting with SMS/email notifications for critical health events. Achieved 98% system uptime and sub-second latency for critical alerts.</p>
+                <p><a href="https://github.com/LAKHIWAL/VITAL-MONITORING-SYSTEM" target="_blank">View on GitHub</a></p>
             </div>
+
             <div class="project">
-                <h3>PRINTER APPLICATION</h3>
-                <p>• Developed a C# web application for print management, enabling users in any organization
-                    to set and adhere to page limits.
-                    <br>• Implemented features to prevent users from exceeding their allocated print quota,
-                    ensuring fair distribution of printing resources.
-                    <br>• Successfully deployed and actively maintained the print management application in a
-                    college environment.
-                </p>
-                <p><a href="https://github.com/LAKHIWAL/PRINTER-APPLICATION" target="_blank">View Project</a></p>
+                <h3>Printer Management Application</h3>
+                <p><strong>Enterprise Solution</strong> — C#, ASP.NET, SQL Server</p>
+                <p>Developed a C# web application for print management, enabling users in any organization to set and adhere to page limits. Implemented features to prevent users from exceeding their allocated print quota, ensuring fair distribution of printing resources. Successfully deployed and actively maintained in a college environment.</p>
+                <p><a href="https://github.com/LAKHIWAL/PRINTER-APPLICATION" target="_blank">View on GitHub</a></p>
             </div>
         </section>
 
+        <!-- Experience Section -->
+        <section id="experience">
+            <h2>Professional Experience</h2>
+            
+            <div class="project">
+                <h3>Full Stack Developer — Finworks360, New Delhi</h3>
+                <p style="color: var(--text-secondary); font-size: 0.95em; margin-bottom: 12px;">January 2026 – Present</p>
+                <p>Replicated and redesigned the company's main website from scratch using Django framework, PostgreSQL database, and modern JavaScript (ES6+), creating a responsive, mobile-first interface that improved user engagement and site performance.</p>
+            </div>
+
+            <div class="project">
+                <h3>Assistant Professor — Shivalik College of Engineering, Dehradun</h3>
+                <p style="color: var(--text-secondary); font-size: 0.95em; margin-bottom: 12px;">July 2025 – December 2025</p>
+                <p>Taught Machine Learning, Data Science, Python Programming, and Database Management Systems to 100+ undergraduate students across 4 courses, maintaining a 4.2/5.0 student satisfaction rating. Developed comprehensive curriculum including lecture materials, coding assignments, and practical lab exercises. Contributed to NBA accreditation documentation and quality assurance processes ensuring compliance with AICTE guidelines.</p>
+            </div>
+
+            <div class="project">
+                <h3>Data Analyst — Keptra Technologies (Remote)</h3>
+                <p style="color: var(--text-secondary); font-size: 0.95em; margin-bottom: 12px;">April 2025 – July 2025</p>
+                <p>Built scalable ETL data pipelines using Python (Pandas, NumPy) and Excel to clean, transform, and analyze cybersecurity datasets with 100K+ records, improving data processing efficiency by 40%. Created Tableau dashboards to communicate security insights to stakeholders. Developed automated anomaly detection scripts that reduced incident response time by 30% through real-time alerting mechanisms.</p>
+            </div>
+
+            <div class="project">
+                <h3>Software Developer — ScoreMe Solutions, Gurugram</h3>
+                <p style="color: var(--text-secondary); font-size: 0.95em; margin-bottom: 12px;">June 2021 – November 2021</p>
+                <p>Engineered high-performance REST APIs using Spring Boot, Java 8+, serving 10K+ daily requests with 99.9% uptime, optimizing response time by 25%. Architected and deployed automated ETL pipeline extracting financial data from 1000+ PDF bank statements daily, reducing manual processing from 4 hours to 30 minutes (80% reduction). Implemented microservices architecture with Spring Cloud and JWT authentication, improving system scalability.</p>
+            </div>
+        </section>
+
+        <!-- Publications Section -->
+        <section id="publications">
+            <h2>Publications</h2>
+            <div class="bio-content">
+                <p>• <strong>Hybrid Machine Learning and Time Series Approaches for GHI Forecasting in Dehradun Using NSRDB Data</strong> — IEEE International Conference on Computing Sciences & Communications - 2026 (ICCSC-2026)</p>
+                <p style="margin-top: 10px;">• <strong>Comparative Analysis of Machine Learning Techniques for Network Traffic Classification</strong> — IEEE International Conference on Computing Sciences & Communications - 2026 (ICCSC-2026)</p>
+                <p style="margin-top: 10px;">• <strong>Forecasting PM2.5, NO2 in Gurugram Region using Machine Learning Model: Prophet</strong> — doi:10.1201/9781003650010-77</p>
+                <p style="margin-top: 10px;">• <strong>Interface for Monitoring and Tracking Pregnant Women's Fetal Health Conditions Based on Cardiotocogram Information</strong></p>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
         <section id="contact">
-            <h2>Contact Information</h2>
-            <p>Email: <a href="mailto:lakhiwal43@gmail.com">lakhiwal43@gmail.com</a></p>
-            <p>Phone: <a href="tel:+91 83839 54896">+91 83839 54896</a></p>
+            <h2>Get In Touch</h2>
+            <div class="contact-info">
+                <p>📧 <a href="mailto:lakhiwal43@gmail.com">lakhiwal43@gmail.com</a></p>
+                <p>📱 <a href="tel:+918383954896">+91 83839 54896</a></p>
+                <p>📍 Faridabad, Haryana, India</p>
+            </div>
         </section>
 
-        <section id="blog">
-            <h2>Blog</h2>
-            <p>Coming soon: Insights and articles about AI, ML, and technology trends.</p>
-        </section>
-
+        <!-- Social Media Section -->
         <section id="social-media">
-            <h2>Social Media Links</h2>
+            <h2>Connect With Me</h2>
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/manish-lakhiwal/" target="_blank">
-                    <svg id="linkedin" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
+                    <svg id="linkedin" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
                         <path d="M24,4H6C4.895,4,4,4.895,4,6v18c0,1.105,0.895,2,2,2h18c1.105,0,2-0.895,2-2V6C26,4.895,25.105,4,24,4z M10.954,22h-2.95 v-9.492h2.95V22z M9.449,11.151c-0.951,0-1.72-0.771-1.72-1.72c0-0.949,0.77-1.719,1.72-1.719c0.948,0,1.719,0.771,1.719,1.719 C11.168,10.38,10.397,11.151,9.449,11.151z M22.004,22h-2.948v-4.616c0-1.101-0.02-2.517-1.533-2.517 c-1.535,0-1.771,1.199-1.771,2.437V22h-2.948v-9.492h2.83v1.297h0.04c0.394-0.746,1.356-1.533,2.791-1.533 c2.987,0,3.539,1.966,3.539,4.522V22z"></path>
                     </svg>
                     <span>LinkedIn</span>
                 </a>
 
                 <a href="https://github.com/Lakhiwal" target="_blank">
-                    <svg id="github" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
+                    <svg id="github" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
                         <path d="M12 0C5.37 0 0 5.37 0 12c0 5.302 3.438 9.8 8.206 11.387.6.11.822-.262.822-.58 0-.288-.012-1.048-.015-2.052-3.338.724-4.042-1.61-4.042-1.61-.546-1.382-1.333-1.75-1.333-1.75-1.088-.743.084-.73.084-.73 1.203.086 1.837 1.236 1.837 1.236 1.07 1.834 2.806 1.305 3.49.998.108-.778.42-1.306.764-1.606-2.676-.306-5.48-1.338-5.48-5.946 0-1.314.465-2.384 1.236-3.226-.124-.307-.534-1.528.116-3.18 0 0 1.01-.324 3.3 1.23.958-.266 1.98-.398 3-.404 1.02.006 2.042.138 3 .404 2.29-1.554 3.298-1.23 3.298-1.23.652 1.652.242 2.873.118 3.18.774.842 1.234 1.912 1.234 3.226 0 4.62-2.808 5.636-5.488 5.936.43.373.818 1.106.818 2.226 0 1.608-.015 2.904-.015 3.3 0 .322.216.697.825.578C20.566 21.795 24 17.3 24 12c0-6.63-5.37-12-12-12z" />
                     </svg>
                     <span>GitHub</span>
                 </a>
 
                 <a href="https://x.com/lakhiwal43" target="_blank">
-                    <svg id="twitter" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="32" height="32" fill="currentColor">
+                    <svg id="twitter" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="28" height="28" fill="currentColor">
                         <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z" />
                     </svg>
                     <span>X</span>
                 </a>
 
                 <a href="https://www.instagram.com/manishlakhiwal10/" target="_blank">
-                    <svg id="instagram" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
+                    <svg id="instagram" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
                         <path d="M17.77 0H6.23C2.793 0 0 2.793 0 6.23v11.54C0 21.207 2.793 24 6.23 24h11.54C21.207 24 24 21.207 24 17.77V6.23C24 2.793 21.207 0 17.77 0zm3.23 17.77c0 1.774-1.446 3.23-3.23 3.23H6.23c-1.785 0-3.23-1.456-3.23-3.23V6.23c0-1.785 1.456-3.23 3.23-3.23h11.54c1.785 0 3.23 1.456 3.23 3.23v11.54z" />
                         <path d="M12 5.54c-3.442 0-6.23 2.788-6.23 6.23 0 3.442 2.788 6.23 6.23 6.23 3.442 0 6.23-2.788 6.23-6.23 0-3.442-2.788-6.23-6.23-6.23zm0 10.423c-2.336 0-4.193-1.857-4.193-4.193S9.664 7.577 12 7.577c2.336 0 4.193 1.857 4.193 4.193 0 2.336-1.857 4.193-4.193 4.193zm6.065-11.874c-.336 0-.61.274-.61.61s.274.61.61.61.61-.274.61-.61-.274-.61-.61-.61z" />
                     </svg>
@@ -766,44 +893,83 @@
     </div>
 
     <div class="download-resume">
-        <a href="https://drive.google.com/file/d/1AF800ic_2XI7tL4_-fiR-v6oI3zbHhq-/view?usp=sharing" target="_blank" download>Download Resume</a>
+        <a href="https://drive.google.com/file/d/1AF800ic_2XI7tL4_-fiR-v6oI3zbHhq-/view?usp=sharing" target="_blank" download>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Download Resume
+        </a>
     </div>
 
     <footer>
-        <p>&copy; 2024 Manish Kumar Lakhiwal. All rights reserved.</p>
+        <p>&copy; 2026 Manish Kumar Lakhiwal. All rights reserved.</p>
     </footer>
 
     <script>
+        // Loading Screen
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loading-screen').classList.add('hidden');
+            }, 800);
+        });
+
+        // Scroll Progress Bar
+        window.addEventListener('scroll', () => {
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (scrollTop / scrollHeight) * 100;
+            document.getElementById('scroll-progress').style.width = scrolled + '%';
+        });
+
+        // Header shrink on scroll
         const header = document.querySelector('header');
         const profileImage = document.querySelector('header img');
 
-        // Header shrink on scroll
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
                 header.classList.add('small');
-                profileImage.style.width = '75px';
-                profileImage.style.height = '75px';
+                profileImage.style.width = '60px';
+                profileImage.style.height = '60px';
                 profileImage.style.margin = '5px 0';
             } else {
                 header.classList.remove('small');
-                profileImage.style.width = '150px';
-                profileImage.style.height = '150px';
-                profileImage.style.margin = '10px 0';
+                profileImage.style.width = '160px';
+                profileImage.style.height = '160px';
+                profileImage.style.margin = '15px 0';
             }
         });
 
-        // Single toggle function for theme
+        // Scroll Animations - Intersection Observer
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Theme Toggle
         function toggleTheme() {
             const isDark = document.body.classList.contains('dark-mode');
             
             if (isDark) {
-                // Switch to light mode
                 document.body.classList.remove('dark-mode');
                 document.body.classList.add('light-mode');
                 document.getElementById('dark-icon').style.display = 'block';
                 document.getElementById('light-icon').style.display = 'none';
             } else {
-                // Switch to dark mode
                 document.body.classList.remove('light-mode');
                 document.body.classList.add('dark-mode');
                 document.getElementById('dark-icon').style.display = 'none';
