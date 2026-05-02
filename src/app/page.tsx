@@ -35,7 +35,10 @@ export default function Home() {
 
   useEffect(() => {
     const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored) setThemeId(stored);
+    if (stored) {
+      const t = setTimeout(() => setThemeId(stored), 0);
+      return () => clearTimeout(t);
+    }
   }, []);
 
   useEffect(() => {

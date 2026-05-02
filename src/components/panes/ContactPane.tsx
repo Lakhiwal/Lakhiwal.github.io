@@ -41,7 +41,7 @@ export function ContactPane() {
           Contact
         </h1>
         <p className="text-xs mb-8" style={{ color: "var(--dim)" }}>
-          // open to work, collabs &amp; good conversations
+          {"// open to work, collabs & good conversations"}
         </p>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
@@ -138,7 +138,7 @@ export function ContactPane() {
                 className="text-[11px] mt-1"
                 style={{ color: "var(--dim)" }}
               >
-                // Drop me an email or LinkedIn DM — fastest way to reach me
+                {"// Drop me an email or LinkedIn DM — fastest way to reach me"}
               </p>
             </form>
           </div>

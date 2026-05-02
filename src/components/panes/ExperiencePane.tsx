@@ -7,7 +7,7 @@ export function ExperiencePane() {
     <div className="pane-enter">
       <div className="home-content mx-auto">
         <p className="text-sm mb-2.5" style={{ color: "var(--gcm)" }}>
-          // experience.ts : where I&apos;ve learned, built &amp; shipped
+          {"// experience.ts : where I've learned, built & shipped"}
         </p>
         <h1
           className="font-display mb-2"

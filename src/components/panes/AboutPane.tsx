@@ -25,7 +25,7 @@ export function AboutPane() {
           About Me
         </h1>
         <p className="text-sm mb-7" style={{ color: "var(--dim)" }}>
-          // who I am · what I do · where I build
+          {"// who I am · what I do · where I build"}
         </p>
 
         <div className="section-card mb-7">

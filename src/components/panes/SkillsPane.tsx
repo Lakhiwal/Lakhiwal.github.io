@@ -22,7 +22,7 @@ export function SkillsPane() {
           Skills
         </h1>
         <p className="text-xs mb-7" style={{ color: "var(--dim)" }}>
-          // confidence levels (self-rated, no impostor syndrome here 💜)
+          {"// confidence levels (self-rated, no impostor syndrome here 💜)"}
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-7 pb-8">

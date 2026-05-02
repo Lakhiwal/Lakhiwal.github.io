@@ -8,7 +8,7 @@ export function ProjectsPane() {
     <div className="pane-enter">
       <div className="home-content mx-auto" style={{ maxWidth: 1200 }}>
         <p className="text-sm mb-2.5" style={{ color: "var(--gcm)" }}>
-          // projects.js : things I&apos;ve built &amp; shipped
+          {"// projects.js : things I've built & shipped"}
         </p>
         <h1
           className="font-display mb-2"

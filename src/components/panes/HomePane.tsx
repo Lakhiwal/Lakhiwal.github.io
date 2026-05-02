@@ -56,8 +56,11 @@ function useTypewriter(lines: string[], typeMs = 55, holdMs = 1500) {
         );
         return () => clearTimeout(t);
       }
-      setI((n) => (n + 1) % lines.length);
-      setPhase("typing");
+      const t = setTimeout(() => {
+        setI((n) => (n + 1) % lines.length);
+        setPhase("typing");
+      }, 0);
+      return () => clearTimeout(t);
     }
   }, [text, phase, i, lines, typeMs, holdMs]);
 
@@ -74,7 +77,7 @@ export function HomePane() {
           className="text-sm mb-2.5 opacity-0 animate-su-1"
           style={{ color: "var(--gcm)" }}
         >
-          // hello world !! Welcome to my portfolio
+          {"// hello world !! Welcome to my portfolio"}
         </p>
 
         <div className="flex items-center gap-4 mb-3.5 opacity-0 animate-su-2">
