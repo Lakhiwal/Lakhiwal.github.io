@@ -1,24 +1,34 @@
 "use client";
 
-import { useState } from "react";
 import {
   FolderIcon,
   SearchIcon,
   GitBranchIcon,
-  ExtensionsIcon,
+  DownloadIcon,
   SparklesIcon,
 } from "./icons";
 
-const TOP = [
-  { id: "explorer", label: "Explorer", Icon: FolderIcon, active: true },
-  { id: "search", label: "Search", Icon: SearchIcon },
+export type ActivityAction =
+  | "explorer"
+  | "search"
+  | "scm"
+  | "resume"
+  | "copilot";
+
+const TOP: { id: ActivityAction; label: string; Icon: typeof FolderIcon }[] = [
+  { id: "explorer", label: "Explorer", Icon: FolderIcon },
+  { id: "search", label: "Search (Ctrl+P)", Icon: SearchIcon },
   { id: "scm", label: "Source Control", Icon: GitBranchIcon },
-  { id: "ext", label: "Extensions", Icon: ExtensionsIcon },
-  { id: "copilot", label: "Manish's Copilot", Icon: SparklesIcon },
+  { id: "resume", label: "Download Resume", Icon: DownloadIcon },
+  { id: "copilot", label: "Manish's Copilot Chat", Icon: SparklesIcon },
 ];
 
-export function ActivityBar() {
-  const [active, setActive] = useState("explorer");
+type Props = {
+  activeView: "explorer" | "scm" | "search" | "copilot";
+  onAction: (id: ActivityAction) => void;
+};
+
+export function ActivityBar({ activeView, onAction }: Props) {
   return (
     <div
       className="flex flex-col items-center pt-1 border-r gap-0.5"
@@ -29,13 +39,18 @@ export function ActivityBar() {
       }}
     >
       {TOP.map(({ id, label, Icon }) => {
-        const isActive = active === id;
+        const isActive =
+          (id === "explorer" && activeView === "explorer") ||
+          (id === "scm" && activeView === "scm") ||
+          (id === "search" && activeView === "search") ||
+          (id === "copilot" && activeView === "copilot");
         return (
           <button
             key={id}
             type="button"
             title={label}
-            onClick={() => setActive(id)}
+            aria-label={label}
+            onClick={() => onAction(id)}
             className="relative w-11 h-11 flex items-center justify-center transition-colors cursor-pointer"
             style={{
               color: isActive ? "var(--bright)" : "var(--dim)",

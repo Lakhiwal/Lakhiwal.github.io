@@ -213,6 +213,48 @@ body {
   transition: grid-template-columns 0.2s ease;
 }
 
+.app-grid.copilot-open {
+  grid-template-columns: 48px 220px 1fr 320px;
+  grid-template-areas:
+    "title  title  title  title"
+    "menu   menu   menu   menu"
+    "act    side   editor copilot"
+    "status status status status";
+}
+
+@media (max-width: 900px) {
+  .app-grid.copilot-open {
+    grid-template-columns: 48px 220px 1fr 0;
+  }
+  .app-grid.copilot-open [data-grid="copilot"] {
+    position: fixed;
+    top: 52px;
+    bottom: 22px;
+    right: 0;
+    width: min(360px, 92vw);
+    z-index: 50;
+    box-shadow: -8px 0 20px rgba(0, 0, 0, 0.5);
+  }
+}
+
+@keyframes panel-fade-in {
+  0% { opacity: 0; transform: translateX(8px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+.panel-fade-in { animation: panel-fade-in 0.18s ease forwards; }
+
+@keyframes overlay-fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+.overlay-fade-in { animation: overlay-fade-in 0.14s ease forwards; }
+
+@keyframes palette-pop {
+  0% { opacity: 0; transform: translateY(-6px) scale(0.98); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+.palette-pop { animation: palette-pop 0.16s ease forwards; }
+
 @keyframes slide-up {
   0% { opacity: 0; transform: translateY(8px); }
   100% { opacity: 1; transform: translateY(0); }

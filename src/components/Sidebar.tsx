@@ -13,9 +13,16 @@ const ICONS = FILE_ICON_MAP();
 type SidebarProps = {
   activeId: string;
   onOpen: (id: string) => void;
+  copilotOpen: boolean;
+  onToggleCopilot: () => void;
 };
 
-export function Sidebar({ activeId, onOpen }: SidebarProps) {
+export function Sidebar({
+  activeId,
+  onOpen,
+  copilotOpen,
+  onToggleCopilot,
+}: SidebarProps) {
   return (
     <div
       className="border-r flex flex-col overflow-hidden select-none"
@@ -76,9 +83,13 @@ export function Sidebar({ activeId, onOpen }: SidebarProps) {
       <div className="px-3 py-2">
         <button
           type="button"
+          onClick={onToggleCopilot}
+          aria-pressed={copilotOpen}
           className="w-full flex items-center justify-between px-3 py-1.5 text-[11px] rounded-md cursor-pointer transition-colors"
           style={{
-            background: "rgba(110,64,201,0.07)",
+            background: copilotOpen
+              ? "rgba(110,64,201,0.18)"
+              : "rgba(110,64,201,0.07)",
             border: "1px solid rgba(110,64,201,0.4)",
             color: "var(--purple)",
           }}
@@ -94,7 +105,7 @@ export function Sidebar({ activeId, onOpen }: SidebarProps) {
               color: "var(--purple)",
             }}
           >
-            AI
+            {copilotOpen ? "open ✓" : "AI"}
           </span>
         </button>
       </div>

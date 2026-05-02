@@ -3,10 +3,13 @@
 import { useEffect, useMemo, useState } from "react";
 import { TitleBar } from "@/components/TitleBar";
 import { MenuBar } from "@/components/MenuBar";
-import { ActivityBar } from "@/components/ActivityBar";
+import { ActivityBar, type ActivityAction } from "@/components/ActivityBar";
 import { Sidebar } from "@/components/Sidebar";
 import { EditorTabs } from "@/components/EditorTabs";
 import { StatusBar, nextTheme } from "@/components/StatusBar";
+import { CommandPalette } from "@/components/CommandPalette";
+import { SourceControlPopover } from "@/components/SourceControlPopover";
+import { CopilotPanel } from "@/components/CopilotPanel";
 import { HomePane } from "@/components/panes/HomePane";
 import { AboutPane } from "@/components/panes/AboutPane";
 import { ProjectsPane } from "@/components/panes/ProjectsPane";
@@ -27,11 +30,15 @@ const PANE_BY_ID = {
 } as const;
 
 const STORAGE_KEY = "aahana-portfolio-theme";
+const RESUME_PATH = "/files/Manish_Lakhiwal_Resume.pdf";
 
 export default function Home() {
   const [openIds, setOpenIds] = useState<string[]>(["home"]);
   const [activeId, setActiveId] = useState<string>("home");
   const [themeId, setThemeId] = useState<string>("default");
+  const [paletteOpen, setPaletteOpen] = useState(false);
+  const [scmOpen, setScmOpen] = useState(false);
+  const [copilotOpen, setCopilotOpen] = useState(false);
 
   useEffect(() => {
     const stored = localStorage.getItem(STORAGE_KEY);
@@ -50,15 +57,35 @@ export default function Home() {
     localStorage.setItem(STORAGE_KEY, themeId);
   }, [themeId]);
 
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      const meta = e.ctrlKey || e.metaKey;
+      if (meta && e.key.toLowerCase() === "p") {
+        e.preventDefault();
+        setPaletteOpen(true);
+        setScmOpen(false);
+      } else if (meta && e.shiftKey && e.key.toLowerCase() === "c") {
+        e.preventDefault();
+        setCopilotOpen((v) => !v);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
   const theme = useMemo(
     () => THEMES.find((t) => t.id === themeId) ?? THEMES[0],
     [themeId],
   );
   const activeFile = FILES.find((f) => f.id === activeId) ?? null;
 
+  const downloadResume = () => {
+    window.open(RESUME_PATH, "_blank");
+  };
+
   const openFile = (id: string) => {
     if (id === "resume") {
-      window.open("/files/Manish_Lakhiwal_Resume.pdf", "_blank");
+      downloadResume();
       return;
     }
     setOpenIds((cur) => (cur.includes(id) ? cur : [...cur, id]));
@@ -77,15 +104,52 @@ export default function Home() {
     });
   };
 
+  const onActivityAction = (id: ActivityAction) => {
+    if (id === "explorer") {
+      setScmOpen(false);
+      return;
+    }
+    if (id === "search") {
+      setPaletteOpen(true);
+      setScmOpen(false);
+      return;
+    }
+    if (id === "scm") {
+      setScmOpen((v) => !v);
+      return;
+    }
+    if (id === "resume") {
+      downloadResume();
+      return;
+    }
+    if (id === "copilot") {
+      setCopilotOpen((v) => !v);
+      return;
+    }
+  };
+
   const Pane =
     PANE_BY_ID[activeId as keyof typeof PANE_BY_ID] ?? HomePane;
 
+  const activeView: "explorer" | "scm" | "search" | "copilot" = scmOpen
+    ? "scm"
+    : paletteOpen
+      ? "search"
+      : copilotOpen
+        ? "copilot"
+        : "explorer";
+
   return (
-    <div className="app-grid">
+    <div className={`app-grid${copilotOpen ? " copilot-open" : ""}`}>
       <TitleBar />
       <MenuBar />
-      <ActivityBar />
-      <Sidebar activeId={activeId} onOpen={openFile} />
+      <ActivityBar activeView={activeView} onAction={onActivityAction} />
+      <Sidebar
+        activeId={activeId}
+        onOpen={openFile}
+        copilotOpen={copilotOpen}
+        onToggleCopilot={() => setCopilotOpen((v) => !v)}
+      />
 
       <div
         className="flex flex-col overflow-hidden min-w-0"
@@ -101,6 +165,21 @@ export default function Home() {
           <Pane key={activeId} />
         </div>
       </div>
+
+      <CopilotPanel
+        open={copilotOpen}
+        onClose={() => setCopilotOpen(false)}
+      />
+
+      <SourceControlPopover open={scmOpen} onClose={() => setScmOpen(false)} />
+
+      {paletteOpen && (
+        <CommandPalette
+          onClose={() => setPaletteOpen(false)}
+          onOpenFile={openFile}
+          onOpenCopilot={() => setCopilotOpen(true)}
+        />
+      )}
 
       <StatusBar
         active={activeFile}

@@ -367,6 +367,53 @@ export type Publication = {
   year: string;
 };
 
+export type CopilotPrompt = {
+  question: string;
+  answer: string;
+};
+
+export const COPILOT_PROMPTS: CopilotPrompt[] = [
+  {
+    question: "Tell me about Manish?",
+    answer:
+      "Manish is a Full Stack Developer & ML Engineer at Finworks360, building a Flutter + Django invoice-discounting fintech. He's a published IEEE researcher (4 papers) with an M.Tech in CSE (AI/ML), and works comfortably across backend, mobile, and ML pipelines. Outside of code he's into systems where solid backend, mobile polish, and ML actually meet. You can read more in the about.html tab 👋",
+  },
+  {
+    question: "What projects has Manish built?",
+    answer:
+      "A few highlights: a fully on-device AI meeting transcription app (Whisper + Pyannote + DistilBART), an SDN DDoS-detection ensemble that hit 97.2% accuracy with sub-100ms inference, the Finworks360 fintech platform (Flutter + DRF + PostgreSQL), and a Java ETL pipeline that turned a 4-hour bank-statement job into 30 minutes. Open projects.js for the full list.",
+  },
+  {
+    question: "Tell me about his work experience",
+    answer:
+      "Currently Full Stack @ Finworks360 (Jan 2026 – present). Before that: Assistant Professor at Shivalik (Jul–Dec 2025), Data Analyst at Keptra (Apr–Jul 2025), and Software Developer at ScoreMe Solutions (2021). The full timeline lives in experience.ts.",
+  },
+  {
+    question: "What's his tech stack?",
+    answer:
+      "Python, Java, Dart, SQL on the language side. Django/DRF, Spring Boot, Flask on the backend. Flutter + Material 3 on mobile. TensorFlow, PyTorch, Scikit-learn, XGBoost, Whisper, and Hugging Face for ML. Postgres + Mongo for data. Open skills.json for the full breakdown.",
+  },
+  {
+    question: "How can I contact Manish?",
+    answer:
+      "Easiest: email lakhiwal43@gmail.com or DM on LinkedIn (linkedin.com/in/manishlakhiwal). His GitHub is github.com/Lakhiwal. The contact.css tab has every channel in one place.",
+  },
+  {
+    question: "How can I support Manish?",
+    answer:
+      "Best way is to share his work — drop the portfolio link with someone who's hiring full-stack/ML, or a star on github.com/Lakhiwal goes a long way. He's also open to collaboration on ML/SDN/fintech projects.",
+  },
+];
+
+export const SCM_STATUS = {
+  branch: "main",
+  commitsAhead: 1,
+  modified: 3,
+  added: 1,
+  deleted: 0,
+  githubUrl: "https://github.com/Lakhiwal",
+};
+
 export const PUBLICATIONS: Publication[] = [
   {
     title: "Comparative Analysis of ML Techniques for Network Traffic Classification",
