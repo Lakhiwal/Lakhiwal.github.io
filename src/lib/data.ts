@@ -67,7 +67,7 @@ export const ROLES = [
 ];
 
 export const STATS = [
-  { label: "Years", value: "4+" },
+  { label: "Years", value: "1+" },
   { label: "Projects", value: "5+" },
   { label: "IEEE Pubs", value: "4" },
   { label: "Always Learning", value: "↑" },
